@@ -5,7 +5,7 @@ from robot.libraries.BuiltIn import BuiltIn
 class listener:
     ROBOT_LISTENER_API_VERSION = 3
 
-    def __init__(self, user=None, key=None, run=None, headless=False):
+    def __init__(self, user=None, key=None, run=None, headless=True):
         self.client = testrailIntegration.GetClient(user, key)
         self.run = run
         self.headless=headless
