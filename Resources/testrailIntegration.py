@@ -14,10 +14,10 @@ def GetClient(user, key):
 def ConvertStatus(b):
     return 1 if b else 5
 
-def UpdateSuiteWithResults(client, run, suite, tests):
+def UpdateSuiteWithResults(client, run, suiteName, tests):
     
     # Get matching suite
-    suite = next((s for s in (client.send_get('get_sections/' + str(project))) if s['name'] == suite), None)
+    suite = next((s for s in (client.send_get('get_sections/' + str(project))) if s['name'] == suiteName), None)
 
     # Only proceed if suite was found
     if not suite:
