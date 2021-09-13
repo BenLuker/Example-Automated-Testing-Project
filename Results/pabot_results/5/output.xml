@@ -1,0 +1,1429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1 (Python 3.9.7 on win32)" generated="20210912 22:22:21.863" rpa="false" schemaversion="2">
+<suite id="s1" name="Tests" source="R:\GLOBE_Website_Tests\Tests">
+<suite id="s1-s1" name="About" source="R:\GLOBE_Website_Tests\Tests\About.robot">
+<test id="s1-s1-t1" name="Contact Us">
+<kw name="Open to Site" library="Observer" type="SETUP">
+<arg>https://observer.globe.gov/</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210912 22:22:22.073" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000014AF80E9FA0&gt;</msg>
+<status status="PASS" starttime="20210912 22:22:22.073" endtime="20210912 22:22:22.073"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.073" endtime="20210912 22:22:22.073"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.074" endtime="20210912 22:22:22.074"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.074" endtime="20210912 22:22:22.074"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.074" endtime="20210912 22:22:22.074"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20210912 22:22:22.075" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20210912 22:22:22.074" endtime="20210912 22:22:23.233"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>${1400}</arg>
+<arg>${600}</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20210912 22:22:23.233" endtime="20210912 22:22:23.350"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20210912 22:22:23.350" level="INFO">Opening url 'https://observer.globe.gov/'</msg>
+<status status="PASS" starttime="20210912 22:22:23.350" endtime="20210912 22:22:33.011"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:22.073" endtime="20210912 22:22:33.011"/>
+</kw>
+<kw name="Click Link in Navbar" library="Observer">
+<arg>About</arg>
+<arg>Contact Us</arg>
+<kw name="Wait Until Page Finishes Loading" library="Observer">
+<kw name="Wait For Condition" library="SeleniumLibrary">
+<arg>return window.document.readyState == 'complete'</arg>
+<doc>Waits until ``condition`` is true or ``timeout`` expires.</doc>
+<status status="PASS" starttime="20210912 22:22:33.012" endtime="20210912 22:22:33.014"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210912 22:22:38.016" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210912 22:22:33.014" endtime="20210912 22:22:38.016"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:33.012" endtime="20210912 22:22:38.016"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${sectionLink}</var>
+<arg>${Navbar}//span[contains(text(),"${section}")]/..</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210912 22:22:38.017" level="INFO">${sectionLink} = xpath=//*[@id='navigation']//span[contains(text(),"About")]/..</msg>
+<status status="PASS" starttime="20210912 22:22:38.017" endtime="20210912 22:22:38.017"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${subsection}&quot;==&quot;${EMPTY}&quot;">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:38.018" endtime="20210912 22:22:38.018"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:38.018" endtime="20210912 22:22:38.018"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:38.018" endtime="20210912 22:22:38.018"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${subsectionLink}</var>
+<arg>${sectionLink}/following-sibling::ul//a[contains(text(),"${subsection}")]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210912 22:22:38.018" level="INFO">${subsectionLink} = xpath=//*[@id='navigation']//span[contains(text(),"About")]/../following-sibling::ul//a[contains(text(),"Contact Us")]</msg>
+<status status="PASS" starttime="20210912 22:22:38.018" endtime="20210912 22:22:38.018"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210912 22:22:38.019" endtime="20210912 22:22:38.034"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20210912 22:22:38.034" level="INFO">Simulating Mouse Over on element 'xpath=//*[@id='navigation']//span[contains(text(),"About")]/..'.</msg>
+<status status="PASS" starttime="20210912 22:22:38.034" endtime="20210912 22:22:38.311"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${subsectionLink}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210912 22:22:38.311" endtime="20210912 22:22:38.325"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${subsectionLink}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210912 22:22:38.325" level="INFO">Clicking element 'xpath=//*[@id='navigation']//span[contains(text(),"About")]/../following-sibling::ul//a[contains(text(),"Contact Us")]'.</msg>
+<status status="PASS" starttime="20210912 22:22:38.325" endtime="20210912 22:22:38.352"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:38.018" endtime="20210912 22:22:38.352"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:38.017" endtime="20210912 22:22:38.352"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:33.011" endtime="20210912 22:22:38.352"/>
+</kw>
+<kw name="Wait Until Location Is" library="SeleniumLibrary">
+<arg>https://observer.globe.gov/about/contact-us</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="PASS" starttime="20210912 22:22:38.353" endtime="20210912 22:22:38.565"/>
+</kw>
+<kw name="Each link in main page content should be valid">
+<kw name="Wait Until Page Finishes Loading" library="Observer">
+<kw name="Wait For Condition" library="SeleniumLibrary">
+<arg>return window.document.readyState == 'complete'</arg>
+<doc>Waits until ``condition`` is true or ``timeout`` expires.</doc>
+<status status="PASS" starttime="20210912 22:22:38.566" endtime="20210912 22:22:38.568"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210912 22:22:43.573" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210912 22:22:38.568" endtime="20210912 22:22:43.573"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:38.566" endtime="20210912 22:22:43.573"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${element_list}</var>
+<arg>${BodyContent_Column1}//a[starts-with(@href, "http")]</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20210912 22:22:43.581" level="INFO">${element_list} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="f44855fadd8d5b2f115179cea2220f30", element="f05d2fb0-33da-4f4d-b588-54578d288b84")&gt;]</msg>
+<status status="PASS" starttime="20210912 22:22:43.573" endtime="20210912 22:22:43.581"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${href_list}</var>
+<arg>[item.get_attribute('href') for item in $element_list]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210912 22:22:43.586" level="INFO">${href_list} = ['https://observer.globe.gov/about/team']</msg>
+<status status="PASS" starttime="20210912 22:22:43.581" endtime="20210912 22:22:43.586"/>
+</kw>
+<for flavor="IN">
+<var>${link}</var>
+<value>@{href_list}</value>
+<iter>
+<var name="${link}">https://observer.globe.gov/about/team</var>
+<kw name="Strip String" library="String">
+<var>${link}</var>
+<arg>${link}</arg>
+<arg>mode=right</arg>
+<arg>characters=.</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20210912 22:22:43.587" level="INFO">${link} = https://observer.globe.gov/about/team</msg>
+<status status="PASS" starttime="20210912 22:22:43.587" endtime="20210912 22:22:43.587"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210912 22:22:43.587" level="INFO">Creating Session using : alias=testLink, url=https://observer.globe.gov/about/team, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210912 22:22:43.587" endtime="20210912 22:22:43.588"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${canConnect}</var>
+<arg>GET On Session</arg>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Get On Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:44.511" level="INFO">GET Request : url=https://observer.globe.gov/about/team 
+ path_url=/about/team 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:44.511" level="INFO">GET Response : url=https://observer.globe.gov/about/team 
+ status=200, reason= 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:43 GMT', 'Content-Type': 'text/html;charset=UTF-8', 'Content-Length': '22278', 'Connection': 'keep-alive', 'Server': 'Apache TomcatO', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Access-Control-Allow-Origin': '*', 'X-OneAgent-JS-Injection': 'true', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '1', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Liferay-Portal': 'Liferay Digital Experience Platform', 'ETag': '"4ea910e7:dtagent10223210811140219pKeA-gzip:dtagent10223210811140219pKeA"', 'Set-Cookie': 'AWSALB=fjB1st4pr1LeuQ7OjgjjO8G3FezSp/JzyFP62zXho4PJ/yN4kTwd04+lgqfGxoZ00IVzsRYArW/7x8RZiDk10dkdx1gtnNaHPvO7NGRZUscdx+/xvpiyEdyIVC/U; Expires=Mon, 20 Sep 2021 05:22:43 GMT; Path=/, AWSALBCORS=fjB1st4pr1LeuQ7OjgjjO8G3FezSp/JzyFP62zXho4PJ/yN4kTwd04+lgqfGxoZ00IVzsRYArW/7x8RZiDk10dkdx1gtnNaHPvO7NGRZUscdx+/xvpiyEdyIVC/U; Expires=Mon, 20 Sep 2021 05:22:43 GMT; Path=/; SameSite=None, JSESSIONID=C5D2C83DC6C1443E64E04B6E4DC8B968; Path=/; Secure; HttpOnly, COOKIE_SUPPORT=true; Expires=Tue, 13-Sep-2022 05:22:43 GMT; Path=/; Secure; HttpOnly, GUEST_LANGUAGE_ID=en_US; Expires=Tue, 13-Sep-2022 05:22:43 GMT; Path=/; Secure; HttpOnly, GUEST_LANGUAGE_ID=en_US; Expires=Tue, 13-Sep-2022 05:22:43 GMT; Path=/; Secure; HttpOnly, COOKIE_SUPPORT=true; Expires=Tue, 13-Sep-2022 05:22:43 GMT; Path=/; Secure; HttpOnly, dtCookie=v_4_srv_5_sn_E00FBB0D979892CA8A7ECBB5412B9FD1_perc_100000_ol_0_mul_1_app-3A91c4300ee97a533c_1; Path=/; Domain=.globe.gov', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Server-Timing': 'dtRpid;desc="-1545849527"'} 
+ body=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			&lt;!DOCTYPE html&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;html class="ltr" dir="ltr" lang="en-US"&gt;
+
+&lt;head&gt;
+	&lt;title&gt;Our Team - GLOBE Observer - GLOBE.gov&lt;/title&gt;
+
+	&lt;meta content="initial-scale=1.0, width=device-width" name="viewport" /&gt;
+    &lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/css/fonts/stylesheet.min.css" rel="stylesheet" media="screen"&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;meta content="text/html; charset=UTF-8" http-equiv="content-type" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;script type="text/javascript" src="/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js" data-dtconfig="app=91c4300ee97a533c|rcdec=1209600000|featureHash=ICA27SVfjqrux|vcv=2|rdnt=1|uxrgce=1|bp=3|srmcrv=10|cuc=c7d5zp0e|mel=100000|dpvc=1|ssv=4|lastModification=1631293850650|dtVersion=10223210811140219|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js|reportUrl=/rb_bf84265lld|rid=RID_1796256883|rpid=-1545849527|domain=globe.gov"&gt;&lt;/script&gt;&lt;link data-senna-track="permanent" href="/o/frontend-theme-font-awesome-web/css/main.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script data-senna-track="permanent" src="/combo?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631478646214&amp;/o/frontend-js-jquery-web/jquery/jquery.min.js&amp;/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&amp;/o/frontend-js-jquery-web/jquery/collapsible_search.js&amp;/o/frontend-js-jquery-web/jquery/fm.js&amp;/o/frontend-js-jquery-web/jquery/form.js&amp;/o/frontend-js-jquery-web/jquery/popper.min.js&amp;/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"&gt;&lt;/script&gt;
+
+
+&lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/images/favicon.ico" rel="icon" /&gt;
+
+
+
+
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/team" rel="canonical" /&gt;
+			
+		
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/es/about/team" hreflang="es-ES" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/ru/about/team" hreflang="ru-RU" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/fr/about/team" hreflang="fr-FR" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/team" hreflang="en-US" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/de/about/team" hreflang="de-DE" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/team" hreflang="x-default" rel="alternate" /&gt;
+			
+			
+
+	
+
+
+
+
+
+&lt;link class="lfr-css-file" data-senna-track="temporary" href="https://observer.globe.gov/o/gov-globe-observer-theme/css/clay.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631478714000" id="liferayAUICSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+&lt;link data-senna-track="temporary" href="/o/frontend-css-web/main.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631478624082" id="liferayPortalCSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+	
+
+
+
+	
+
+		&lt;link data-senna-track="temporary" href="/combo?browserId=other&amp;amp;minifierType=&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_UANZ6FDksm8D:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fcss%2Fmain.css&amp;amp;t=1631478714000" id="9240b2ed" rel="stylesheet" type="text/css" /&gt;
+
+	
+
+
+
+
+
+
+
+&lt;script data-senna-track="temporary" type="text/javascript"&gt;
+	// &lt;![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return true;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			null
+
+			
+
+			
+		];
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			NTLM_AUTH_ENABLED: false,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 104857600
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '144';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/globe-observer/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/about/team';
+				},
+				getLayoutURL: function() {
+					return 'https://observer.globe.gov/about/team';
+				},
+				getParentLayoutId: function() {
+					return '2';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'en-US';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fabout\x2fteam';
+			},
+			getCDNBaseURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '10165';
+			},
+			getCompanyId: function() {
+				return '10132';
+			},
+			getDefaultLanguageId: function() {
+				return 'en_US';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'en_US';
+			},
+			getParentGroupId: function() {
+				return '19589576';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://observer.globe.gov/o/gov-globe-observer-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/gov-globe-observer-theme';
+			},
+			getPlid: function() {
+				return '51818578';
+			},
+			getPortalURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getScopeGroupId: function() {
+				return '19589576';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '19589576';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://observer.globe.gov/group/globe-observer/~/control_panel/manage?p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '19589576';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=51818578';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fweb\x2fguest\x2fhome';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '10135';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getAvailableLangPath: function() {
+				return 'available_languages.jsp?browserId=other&amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;colorSchemeId=01&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631480340807';
+			},
+			getCombine: function() {
+				return true;
+			},
+			getComboPath: function() {
+				return '/combo/?browserId=other&amp;minifierType=&amp;languageId=en_US&amp;b=7210&amp;t=1631478628671&amp;';
+			},
+			getDateFormat: function() {
+				return '%m/%d/%Y';
+			},
+			getEditorCKEditorPath: function() {
+				return '/o/frontend-editor-ckeditor-web';
+			},
+			getFilter: function() {
+				var filter = 'raw';
+
+				
+					
+						filter = 'min';
+					
+					
+
+				return filter;
+			},
+			getFilterConfig: function() {
+				var instance = this;
+
+				var filterConfig = null;
+
+				if (!instance.getCombine()) {
+					filterConfig = {
+						replaceStr: '.js' + instance.getStaticResourceURLParams(),
+						searchExp: '\\.js$'
+					};
+				}
+
+				return filterConfig;
+			},
+			getJavaScri... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<status status="PASS" starttime="20210912 22:22:43.588" endtime="20210912 22:22:44.511"/>
+</kw>
+<msg timestamp="20210912 22:22:44.511" level="INFO">${canConnect} = True</msg>
+<status status="PASS" starttime="20210912 22:22:43.588" endtime="20210912 22:22:44.511"/>
+</kw>
+<if>
+<branch type="IF" condition="${canConnect}">
+<kw name="Get On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:44.810" level="INFO">GET Request : url=https://observer.globe.gov/about/team 
+ path_url=/about/team 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'dtCookie=v_4_srv_5_sn_E00FBB0D979892CA8A7ECBB5412B9FD1_perc_100000_ol_0_mul_1_app-3A91c4300ee97a533c_1; AWSALB=fjB1st4pr1LeuQ7OjgjjO8G3FezSp/JzyFP62zXho4PJ/yN4kTwd04+lgqfGxoZ00IVzsRYArW/7x8RZiDk10dkdx1gtnNaHPvO7NGRZUscdx+/xvpiyEdyIVC/U; AWSALBCORS=fjB1st4pr1LeuQ7OjgjjO8G3FezSp/JzyFP62zXho4PJ/yN4kTwd04+lgqfGxoZ00IVzsRYArW/7x8RZiDk10dkdx1gtnNaHPvO7NGRZUscdx+/xvpiyEdyIVC/U; COOKIE_SUPPORT=true; GUEST_LANGUAGE_ID=en_US; JSESSIONID=C5D2C83DC6C1443E64E04B6E4DC8B968'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:44.810" level="INFO">GET Response : url=https://observer.globe.gov/about/team 
+ status=200, reason= 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:44 GMT', 'Content-Type': 'text/html;charset=UTF-8', 'Content-Length': '22278', 'Connection': 'keep-alive', 'Server': 'Apache TomcatO', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Access-Control-Allow-Origin': '*', 'X-OneAgent-JS-Injection': 'true', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '1', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Liferay-Portal': 'Liferay Digital Experience Platform', 'ETag': '"911f4bf:dtagent10223210811140219pKeA-gzip:dtagent10223210811140219pKeA"', 'Set-Cookie': 'AWSALB=lZpQyBRkBqQSMqAT+uMnM8qiioLZxn3NzWgoxZnW+GFi3hGHvMaG6IOlig4nwgGn4+Q2qfoSRfhrr8u1MKhaH3GbliHZa0qcFgj3ztPrewvRjMIwNuVpWX6nFikh; Expires=Mon, 20 Sep 2021 05:22:43 GMT; Path=/, AWSALBCORS=lZpQyBRkBqQSMqAT+uMnM8qiioLZxn3NzWgoxZnW+GFi3hGHvMaG6IOlig4nwgGn4+Q2qfoSRfhrr8u1MKhaH3GbliHZa0qcFgj3ztPrewvRjMIwNuVpWX6nFikh; Expires=Mon, 20 Sep 2021 05:22:43 GMT; Path=/; SameSite=None', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Server-Timing': 'dtRpid;desc="1691784067"'} 
+ body=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			&lt;!DOCTYPE html&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;html class="ltr" dir="ltr" lang="en-US"&gt;
+
+&lt;head&gt;
+	&lt;title&gt;Our Team - GLOBE Observer - GLOBE.gov&lt;/title&gt;
+
+	&lt;meta content="initial-scale=1.0, width=device-width" name="viewport" /&gt;
+    &lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/css/fonts/stylesheet.min.css" rel="stylesheet" media="screen"&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;meta content="text/html; charset=UTF-8" http-equiv="content-type" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;script type="text/javascript" src="/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js" data-dtconfig="app=91c4300ee97a533c|rcdec=1209600000|featureHash=ICA27SVfjqrux|vcv=2|rdnt=1|uxrgce=1|bp=3|srmcrv=10|cuc=c7d5zp0e|mel=100000|dpvc=1|ssv=4|lastModification=1631293850650|dtVersion=10223210811140219|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js|reportUrl=/rb_bf84265lld|rid=RID_1796256883|rpid=1691784067|domain=globe.gov"&gt;&lt;/script&gt;&lt;link data-senna-track="permanent" href="/o/frontend-theme-font-awesome-web/css/main.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script data-senna-track="permanent" src="/combo?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631478646214&amp;/o/frontend-js-jquery-web/jquery/jquery.min.js&amp;/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&amp;/o/frontend-js-jquery-web/jquery/collapsible_search.js&amp;/o/frontend-js-jquery-web/jquery/fm.js&amp;/o/frontend-js-jquery-web/jquery/form.js&amp;/o/frontend-js-jquery-web/jquery/popper.min.js&amp;/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"&gt;&lt;/script&gt;
+
+
+&lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/images/favicon.ico" rel="icon" /&gt;
+
+
+
+
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/team" rel="canonical" /&gt;
+			
+		
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/es/about/team" hreflang="es-ES" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/ru/about/team" hreflang="ru-RU" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/fr/about/team" hreflang="fr-FR" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/team" hreflang="en-US" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/de/about/team" hreflang="de-DE" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/team" hreflang="x-default" rel="alternate" /&gt;
+			
+			
+
+	
+
+
+
+
+
+&lt;link class="lfr-css-file" data-senna-track="temporary" href="https://observer.globe.gov/o/gov-globe-observer-theme/css/clay.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631478714000" id="liferayAUICSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+&lt;link data-senna-track="temporary" href="/o/frontend-css-web/main.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631478624082" id="liferayPortalCSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+	
+
+
+
+	
+
+		&lt;link data-senna-track="temporary" href="/combo?browserId=other&amp;amp;minifierType=&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_UANZ6FDksm8D:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fcss%2Fmain.css&amp;amp;t=1631478714000" id="9240b2ed" rel="stylesheet" type="text/css" /&gt;
+
+	
+
+
+
+
+
+
+
+&lt;script data-senna-track="temporary" type="text/javascript"&gt;
+	// &lt;![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return true;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			null
+
+			
+
+			
+		];
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			NTLM_AUTH_ENABLED: false,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 104857600
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '144';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/globe-observer/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/about/team';
+				},
+				getLayoutURL: function() {
+					return 'https://observer.globe.gov/about/team';
+				},
+				getParentLayoutId: function() {
+					return '2';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'en-US';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fabout\x2fteam';
+			},
+			getCDNBaseURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '10165';
+			},
+			getCompanyId: function() {
+				return '10132';
+			},
+			getDefaultLanguageId: function() {
+				return 'en_US';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'en_US';
+			},
+			getParentGroupId: function() {
+				return '19589576';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://observer.globe.gov/o/gov-globe-observer-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/gov-globe-observer-theme';
+			},
+			getPlid: function() {
+				return '51818578';
+			},
+			getPortalURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getScopeGroupId: function() {
+				return '19589576';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '19589576';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://observer.globe.gov/group/globe-observer/~/control_panel/manage?p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '19589576';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=51818578';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fweb\x2fguest\x2fhome';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '10135';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getAvailableLangPath: function() {
+				return 'available_languages.jsp?browserId=other&amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;colorSchemeId=01&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631480340807';
+			},
+			getCombine: function() {
+				return true;
+			},
+			getComboPath: function() {
+				return '/combo/?browserId=other&amp;minifierType=&amp;languageId=en_US&amp;b=7210&amp;t=1631478628671&amp;';
+			},
+			getDateFormat: function() {
+				return '%m/%d/%Y';
+			},
+			getEditorCKEditorPath: function() {
+				return '/o/frontend-editor-ckeditor-web';
+			},
+			getFilter: function() {
+				var filter = 'raw';
+
+				
+					
+						filter = 'min';
+					
+					
+
+				return filter;
+			},
+			getFilterConfig: function() {
+				var instance = this;
+
+				var filterConfig = null;
+
+				if (!instance.getCombine()) {
+					filterConfig = {
+						replaceStr: '.js' + instance.getStaticResourceURLParams(),
+						searchExp: '\\.js$'
+					};
+				}
+
+				return filterConfig;
+			},
+			getJavaScrip... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20210912 22:22:44.810" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210912 22:22:44.512" endtime="20210912 22:22:44.810"/>
+</kw>
+<if>
+<branch type="IF" condition="${response.status_code}!=200">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed Status Code ${response.status_code} with link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:44.811" endtime="20210912 22:22:44.811"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:44.811" endtime="20210912 22:22:44.811"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:44.810" endtime="20210912 22:22:44.811"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:44.511" endtime="20210912 22:22:44.811"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed To Connect to link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:44.811" endtime="20210912 22:22:44.811"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:44.811" endtime="20210912 22:22:44.811"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:44.511" endtime="20210912 22:22:44.811"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:43.587" endtime="20210912 22:22:44.811"/>
+</iter>
+<status status="PASS" starttime="20210912 22:22:43.587" endtime="20210912 22:22:44.811"/>
+</for>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20210912 22:22:44.811" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20210912 22:22:44.811" endtime="20210912 22:22:44.811"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:38.565" endtime="20210912 22:22:44.811"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20210912 22:22:44.812" endtime="20210912 22:22:46.864"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:22.072" endtime="20210912 22:22:46.864"/>
+</test>
+<status status="PASS" starttime="20210912 22:22:21.946" endtime="20210912 22:22:46.864"/>
+</suite>
+<status status="PASS" starttime="20210912 22:22:21.926" endtime="20210912 22:22:49.062"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="About">Tests.About</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

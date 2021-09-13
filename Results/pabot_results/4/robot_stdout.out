@@ -1,0 +1,17 @@
+==============================================================================
+Tests                                                                         
+==============================================================================
+Tests.About                                                                   
+==============================================================================
+Our Team                                                              | FAIL |
+Failed To Connect to link: https://observer.globe.gov/news-events-and-people/people/obsscientistsdetail/19589576/tina-rogerson
+------------------------------------------------------------------------------
+Uploading Results to Testrail...
+
+Tests.About                                                           | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+Tests                                                                 | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+Output:  R:\GLOBE_Website_Tests\Results\pabot_results\4\output.xml

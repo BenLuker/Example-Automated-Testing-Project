@@ -1,0 +1,2953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1 (Python 3.9.7 on win32)" generated="20210912 22:22:21.864" rpa="false" schemaversion="2">
+<suite id="s1" name="Tests" source="R:\GLOBE_Website_Tests\Tests">
+<suite id="s1-s1" name="About" source="R:\GLOBE_Website_Tests\Tests\About.robot">
+<test id="s1-s1-t1" name="Citizen Science">
+<kw name="Open to Site" library="Observer" type="SETUP">
+<arg>https://observer.globe.gov/</arg>
+<kw name="Evaluate" library="BuiltIn">
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210912 22:22:22.088" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000020C92369FA0&gt;</msg>
+<status status="PASS" starttime="20210912 22:22:22.087" endtime="20210912 22:22:22.088"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.088" endtime="20210912 22:22:22.088"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.088" endtime="20210912 22:22:22.089"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.089" endtime="20210912 22:22:22.089"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20210912 22:22:22.089" endtime="20210912 22:22:22.089"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20210912 22:22:22.090" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20210912 22:22:22.089" endtime="20210912 22:22:23.248"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>${1400}</arg>
+<arg>${600}</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20210912 22:22:23.248" endtime="20210912 22:22:23.365"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${link}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20210912 22:22:23.365" level="INFO">Opening url 'https://observer.globe.gov/'</msg>
+<status status="PASS" starttime="20210912 22:22:23.365" endtime="20210912 22:22:36.905"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:22.087" endtime="20210912 22:22:36.905"/>
+</kw>
+<kw name="Click Link in Navbar" library="Observer">
+<arg>About</arg>
+<arg>Citizen Science</arg>
+<kw name="Wait Until Page Finishes Loading" library="Observer">
+<kw name="Wait For Condition" library="SeleniumLibrary">
+<arg>return window.document.readyState == 'complete'</arg>
+<doc>Waits until ``condition`` is true or ``timeout`` expires.</doc>
+<status status="PASS" starttime="20210912 22:22:36.905" endtime="20210912 22:22:36.907"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210912 22:22:41.923" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210912 22:22:36.907" endtime="20210912 22:22:41.923"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:36.905" endtime="20210912 22:22:41.923"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${sectionLink}</var>
+<arg>${Navbar}//span[contains(text(),"${section}")]/..</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210912 22:22:41.924" level="INFO">${sectionLink} = xpath=//*[@id='navigation']//span[contains(text(),"About")]/..</msg>
+<status status="PASS" starttime="20210912 22:22:41.924" endtime="20210912 22:22:41.924"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${subsection}&quot;==&quot;${EMPTY}&quot;">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:41.925" endtime="20210912 22:22:41.925"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:41.925" endtime="20210912 22:22:41.925"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:41.925" endtime="20210912 22:22:41.925"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${subsectionLink}</var>
+<arg>${sectionLink}/following-sibling::ul//a[contains(text(),"${subsection}")]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210912 22:22:41.926" level="INFO">${subsectionLink} = xpath=//*[@id='navigation']//span[contains(text(),"About")]/../following-sibling::ul//a[contains(text(),"Citizen Science")]</msg>
+<status status="PASS" starttime="20210912 22:22:41.925" endtime="20210912 22:22:41.926"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210912 22:22:41.926" endtime="20210912 22:22:41.940"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>${sectionLink}</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20210912 22:22:41.941" level="INFO">Simulating Mouse Over on element 'xpath=//*[@id='navigation']//span[contains(text(),"About")]/..'.</msg>
+<status status="PASS" starttime="20210912 22:22:41.941" endtime="20210912 22:22:42.215"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${subsectionLink}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210912 22:22:42.216" endtime="20210912 22:22:42.228"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${subsectionLink}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210912 22:22:42.228" level="INFO">Clicking element 'xpath=//*[@id='navigation']//span[contains(text(),"About")]/../following-sibling::ul//a[contains(text(),"Citizen Science")]'.</msg>
+<status status="PASS" starttime="20210912 22:22:42.228" endtime="20210912 22:22:42.257"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:41.925" endtime="20210912 22:22:42.257"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:41.924" endtime="20210912 22:22:42.257"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:36.905" endtime="20210912 22:22:42.258"/>
+</kw>
+<kw name="Wait Until Location Is" library="SeleniumLibrary">
+<arg>https://observer.globe.gov/about/citizen-science</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="PASS" starttime="20210912 22:22:42.258" endtime="20210912 22:22:42.468"/>
+</kw>
+<kw name="Each link in main page content should be valid">
+<kw name="Wait Until Page Finishes Loading" library="Observer">
+<kw name="Wait For Condition" library="SeleniumLibrary">
+<arg>return window.document.readyState == 'complete'</arg>
+<doc>Waits until ``condition`` is true or ``timeout`` expires.</doc>
+<status status="PASS" starttime="20210912 22:22:42.468" endtime="20210912 22:22:42.470"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210912 22:22:47.485" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210912 22:22:42.470" endtime="20210912 22:22:47.485"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:42.468" endtime="20210912 22:22:47.485"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${element_list}</var>
+<arg>${BodyContent_Column1}//a[starts-with(@href, "http")]</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20210912 22:22:47.491" level="INFO">${element_list} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="f71285d7fcb0f313075ce0ef9cd1c8ae", element="3713d795-84ac-4467-96d8-dcb2e42c272e")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20210912 22:22:47.485" endtime="20210912 22:22:47.491"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${href_list}</var>
+<arg>[item.get_attribute('href') for item in $element_list]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210912 22:22:47.500" level="INFO">${href_list} = ['http://observer.globe.gov/about/get-the-app', 'http://www.globe.gov/', 'http://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348']</msg>
+<status status="PASS" starttime="20210912 22:22:47.491" endtime="20210912 22:22:47.500"/>
+</kw>
+<for flavor="IN">
+<var>${link}</var>
+<value>@{href_list}</value>
+<iter>
+<var name="${link}">http://observer.globe.gov/about/get-the-app</var>
+<kw name="Strip String" library="String">
+<var>${link}</var>
+<arg>${link}</arg>
+<arg>mode=right</arg>
+<arg>characters=.</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20210912 22:22:47.500" level="INFO">${link} = http://observer.globe.gov/about/get-the-app</msg>
+<status status="PASS" starttime="20210912 22:22:47.500" endtime="20210912 22:22:47.500"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210912 22:22:47.501" level="INFO">Creating Session using : alias=testLink, url=http://observer.globe.gov/about/get-the-app, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210912 22:22:47.500" endtime="20210912 22:22:47.501"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${canConnect}</var>
+<arg>GET On Session</arg>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Get On Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:48.088" level="INFO">GET Request : url=http://observer.globe.gov/about/get-the-app (redirected) 
+ path_url=/about/get-the-app 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:48.088" level="INFO">GET Response : url=https://observer.globe.gov/about/get-the-app 
+ status=200, reason= 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:47 GMT', 'Content-Type': 'text/html;charset=UTF-8', 'Content-Length': '17591', 'Connection': 'keep-alive', 'Server': 'Apache TomcatO', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Access-Control-Allow-Origin': '*', 'X-OneAgent-JS-Injection': 'true', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '1', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Liferay-Portal': 'Liferay Digital Experience Platform', 'ETag': '"414feee9:dtagent10223210811140219pKeA-gzip:dtagent10223210811140219pKeA"', 'Set-Cookie': 'AWSALB=cKgFxHllPejClj5cyuDmH+jSOXJ62CzAEE8Li0x0aGruDmPnxcgXE9aNiya6QCNlhecgvj0YuQOkyRCmcQLnW5zxE5500yIcICouCvjPaP0OVvLvwU/dmK6KJo7T; Expires=Mon, 20 Sep 2021 05:22:47 GMT; Path=/, AWSALBCORS=cKgFxHllPejClj5cyuDmH+jSOXJ62CzAEE8Li0x0aGruDmPnxcgXE9aNiya6QCNlhecgvj0YuQOkyRCmcQLnW5zxE5500yIcICouCvjPaP0OVvLvwU/dmK6KJo7T; Expires=Mon, 20 Sep 2021 05:22:47 GMT; Path=/; SameSite=None, JSESSIONID=430DBB76706F63FF279E7E1D0626B4C5; Path=/; Secure; HttpOnly, COOKIE_SUPPORT=true; Expires=Tue, 13-Sep-2022 05:22:47 GMT; Path=/; Secure; HttpOnly, GUEST_LANGUAGE_ID=en_US; Expires=Tue, 13-Sep-2022 05:22:47 GMT; Path=/; Secure; HttpOnly, GUEST_LANGUAGE_ID=en_US; Expires=Tue, 13-Sep-2022 05:22:47 GMT; Path=/; Secure; HttpOnly, COOKIE_SUPPORT=true; Expires=Tue, 13-Sep-2022 05:22:47 GMT; Path=/; Secure; HttpOnly', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Server-Timing': 'dtRpid;desc="1168986685"'} 
+ body=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			&lt;!DOCTYPE html&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;html class="ltr" dir="ltr" lang="en-US"&gt;
+
+&lt;head&gt;
+	&lt;title&gt;Get the App - GLOBE Observer - GLOBE.gov&lt;/title&gt;
+
+	&lt;meta content="initial-scale=1.0, width=device-width" name="viewport" /&gt;
+    &lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/css/fonts/stylesheet.min.css" rel="stylesheet" media="screen"&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;meta content="text/html; charset=UTF-8" http-equiv="content-type" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;script type="text/javascript" src="/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js" data-dtconfig="app=91c4300ee97a533c|rcdec=1209600000|featureHash=ICA27SVfjqrux|vcv=2|rdnt=1|uxrgce=1|bp=3|srmcrv=10|cuc=c7d5zp0e|mel=100000|dpvc=1|ssv=4|lastModification=1631293850650|dtVersion=10223210811140219|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js|reportUrl=/rb_bf84265lld|rid=RID_-146894876|rpid=1168986685|domain=globe.gov"&gt;&lt;/script&gt;&lt;link data-senna-track="permanent" href="/o/frontend-theme-font-awesome-web/css/main.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script data-senna-track="permanent" src="/combo?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631479678212&amp;/o/frontend-js-jquery-web/jquery/jquery.min.js&amp;/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&amp;/o/frontend-js-jquery-web/jquery/collapsible_search.js&amp;/o/frontend-js-jquery-web/jquery/fm.js&amp;/o/frontend-js-jquery-web/jquery/form.js&amp;/o/frontend-js-jquery-web/jquery/popper.min.js&amp;/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"&gt;&lt;/script&gt;
+
+
+&lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/images/favicon.ico" rel="icon" /&gt;
+
+
+
+
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/get-the-app" rel="canonical" /&gt;
+			
+		
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/es/about/get-the-app" hreflang="es-ES" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/ru/about/get-the-app" hreflang="ru-RU" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/fr/about/get-the-app" hreflang="fr-FR" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/get-the-app" hreflang="en-US" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/de/about/get-the-app" hreflang="de-DE" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/get-the-app" hreflang="x-default" rel="alternate" /&gt;
+			
+			
+
+	
+
+
+
+
+
+&lt;link class="lfr-css-file" data-senna-track="temporary" href="https://observer.globe.gov/o/gov-globe-observer-theme/css/clay.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479742000" id="liferayAUICSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+&lt;link data-senna-track="temporary" href="/o/frontend-css-web/main.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479657027" id="liferayPortalCSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+	
+
+
+
+	
+
+		&lt;link data-senna-track="temporary" href="/combo?browserId=other&amp;amp;minifierType=&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_779LKzJrHHIq:%2Fcss%2Fmain.css&amp;amp;com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet:%2Fcss%2Fmain.css&amp;amp;t=1631479742000" id="d9472406" rel="stylesheet" type="text/css" /&gt;
+
+	
+
+
+
+
+
+
+
+&lt;script data-senna-track="temporary" type="text/javascript"&gt;
+	// &lt;![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return true;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			null
+
+			
+
+			
+		];
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			NTLM_AUTH_ENABLED: false,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 104857600
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '28';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/globe-observer/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/about/get-the-app';
+				},
+				getLayoutURL: function() {
+					return 'https://observer.globe.gov/about/get-the-app';
+				},
+				getParentLayoutId: function() {
+					return '2';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'en-US';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fabout\x2fget-the-app';
+			},
+			getCDNBaseURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '10165';
+			},
+			getCompanyId: function() {
+				return '10132';
+			},
+			getDefaultLanguageId: function() {
+				return 'en_US';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'en_US';
+			},
+			getParentGroupId: function() {
+				return '19589576';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://observer.globe.gov/o/gov-globe-observer-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/gov-globe-observer-theme';
+			},
+			getPlid: function() {
+				return '19643903';
+			},
+			getPortalURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getScopeGroupId: function() {
+				return '19589576';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '19589576';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://observer.globe.gov/group/globe-observer/~/control_panel/manage?p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '19589576';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=19643903';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fweb\x2fguest\x2fhome';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '10135';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getAvailableLangPath: function() {
+				return 'available_languages.jsp?browserId=other&amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;colorSchemeId=01&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631480907373';
+			},
+			getCombine: function() {
+				return true;
+			},
+			getComboPath: function() {
+				return '/combo/?browserId=other&amp;minifierType=&amp;languageId=en_US&amp;b=7210&amp;t=1631479660919&amp;';
+			},
+			getDateFormat: function() {
+				return '%m/%d/%Y';
+			},
+			getEditorCKEditorPath: function() {
+				return '/o/frontend-editor-ckeditor-web';
+			},
+			getFilter: function() {
+				var filter = 'raw';
+
+				
+					
+						filter = 'min';
+					
+					
+
+				return filter;
+			},
+			getFilterConfig: ... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<status status="PASS" starttime="20210912 22:22:47.501" endtime="20210912 22:22:48.088"/>
+</kw>
+<msg timestamp="20210912 22:22:48.088" level="INFO">${canConnect} = True</msg>
+<status status="PASS" starttime="20210912 22:22:47.501" endtime="20210912 22:22:48.088"/>
+</kw>
+<if>
+<branch type="IF" condition="${canConnect}">
+<kw name="Get On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:48.340" level="INFO">GET Request : url=http://observer.globe.gov/about/get-the-app (redirected) 
+ path_url=/about/get-the-app 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'dtCookie=v_4_srv_6_sn_30D54E8A24788AF9E3C710AF7768E476_perc_100000_ol_0_mul_1_app-3A91c4300ee97a533c_1; AWSALB=cKgFxHllPejClj5cyuDmH+jSOXJ62CzAEE8Li0x0aGruDmPnxcgXE9aNiya6QCNlhecgvj0YuQOkyRCmcQLnW5zxE5500yIcICouCvjPaP0OVvLvwU/dmK6KJo7T; AWSALBCORS=cKgFxHllPejClj5cyuDmH+jSOXJ62CzAEE8Li0x0aGruDmPnxcgXE9aNiya6QCNlhecgvj0YuQOkyRCmcQLnW5zxE5500yIcICouCvjPaP0OVvLvwU/dmK6KJo7T'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:48.340" level="INFO">GET Response : url=https://observer.globe.gov/about/get-the-app 
+ status=200, reason= 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:47 GMT', 'Content-Type': 'text/html;charset=UTF-8', 'Content-Length': '17591', 'Connection': 'keep-alive', 'Server': 'Apache TomcatO', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Access-Control-Allow-Origin': '*', 'X-OneAgent-JS-Injection': 'true', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '1', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Liferay-Portal': 'Liferay Digital Experience Platform', 'ETag': '"d0899145:dtagent10223210811140219pKeA-gzip:dtagent10223210811140219pKeA"', 'Set-Cookie': 'AWSALB=SDR8NEzjrvA2BH3d0xkjuBNvlYKb/ql1Jk2x1xQzYYNS1wDtE9zDWnFpCtpq+aWwx+C6EYvbYCKkCAgZHnB5HC8WVfZwoQAXkr2gTbFe9WzeF8B6qCN3kpHXITv8; Expires=Mon, 20 Sep 2021 05:22:47 GMT; Path=/, AWSALBCORS=SDR8NEzjrvA2BH3d0xkjuBNvlYKb/ql1Jk2x1xQzYYNS1wDtE9zDWnFpCtpq+aWwx+C6EYvbYCKkCAgZHnB5HC8WVfZwoQAXkr2gTbFe9WzeF8B6qCN3kpHXITv8; Expires=Mon, 20 Sep 2021 05:22:47 GMT; Path=/; SameSite=None', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Server-Timing': 'dtRpid;desc="-9168066"'} 
+ body=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			&lt;!DOCTYPE html&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;html class="ltr" dir="ltr" lang="en-US"&gt;
+
+&lt;head&gt;
+	&lt;title&gt;Get the App - GLOBE Observer - GLOBE.gov&lt;/title&gt;
+
+	&lt;meta content="initial-scale=1.0, width=device-width" name="viewport" /&gt;
+    &lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/css/fonts/stylesheet.min.css" rel="stylesheet" media="screen"&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;meta content="text/html; charset=UTF-8" http-equiv="content-type" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;script type="text/javascript" src="/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js" data-dtconfig="app=91c4300ee97a533c|rcdec=1209600000|featureHash=ICA27SVfjqrux|vcv=2|rdnt=1|uxrgce=1|bp=3|srmcrv=10|cuc=c7d5zp0e|mel=100000|dpvc=1|ssv=4|lastModification=1631293850650|dtVersion=10223210811140219|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/ruxitagentjs_ICA27SVfjqrux_10223210811140219.js|reportUrl=/rb_bf84265lld|rid=RID_-146894876|rpid=-9168066|domain=globe.gov"&gt;&lt;/script&gt;&lt;link data-senna-track="permanent" href="/o/frontend-theme-font-awesome-web/css/main.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script data-senna-track="permanent" src="/combo?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631479678212&amp;/o/frontend-js-jquery-web/jquery/jquery.min.js&amp;/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&amp;/o/frontend-js-jquery-web/jquery/collapsible_search.js&amp;/o/frontend-js-jquery-web/jquery/fm.js&amp;/o/frontend-js-jquery-web/jquery/form.js&amp;/o/frontend-js-jquery-web/jquery/popper.min.js&amp;/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"&gt;&lt;/script&gt;
+
+
+&lt;link href="https://observer.globe.gov/o/gov-globe-observer-theme/images/favicon.ico" rel="icon" /&gt;
+
+
+
+
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/get-the-app" rel="canonical" /&gt;
+			
+		
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/es/about/get-the-app" hreflang="es-ES" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/ru/about/get-the-app" hreflang="ru-RU" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/fr/about/get-the-app" hreflang="fr-FR" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/get-the-app" hreflang="en-US" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/de/about/get-the-app" hreflang="de-DE" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://observer.globe.gov/about/get-the-app" hreflang="x-default" rel="alternate" /&gt;
+			
+			
+
+	
+
+
+
+
+
+&lt;link class="lfr-css-file" data-senna-track="temporary" href="https://observer.globe.gov/o/gov-globe-observer-theme/css/clay.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479742000" id="liferayAUICSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+&lt;link data-senna-track="temporary" href="/o/frontend-css-web/main.css?browserId=other&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479657027" id="liferayPortalCSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+	
+
+
+
+	
+
+		&lt;link data-senna-track="temporary" href="/combo?browserId=other&amp;amp;minifierType=&amp;amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_779LKzJrHHIq:%2Fcss%2Fmain.css&amp;amp;com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet:%2Fcss%2Fmain.css&amp;amp;t=1631479742000" id="d9472406" rel="stylesheet" type="text/css" /&gt;
+
+	
+
+
+
+
+
+
+
+&lt;script data-senna-track="temporary" type="text/javascript"&gt;
+	// &lt;![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return true;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			null
+
+			
+
+			
+		];
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			NTLM_AUTH_ENABLED: false,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 104857600
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '28';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/globe-observer/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/about/get-the-app';
+				},
+				getLayoutURL: function() {
+					return 'https://observer.globe.gov/about/get-the-app';
+				},
+				getParentLayoutId: function() {
+					return '2';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'en-US';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fabout\x2fget-the-app';
+			},
+			getCDNBaseURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '10165';
+			},
+			getCompanyId: function() {
+				return '10132';
+			},
+			getDefaultLanguageId: function() {
+				return 'en_US';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'en_US';
+			},
+			getParentGroupId: function() {
+				return '19589576';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://observer.globe.gov/o/gov-globe-observer-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/gov-globe-observer-theme';
+			},
+			getPlid: function() {
+				return '19643903';
+			},
+			getPortalURL: function() {
+				return 'https://observer.globe.gov';
+			},
+			getScopeGroupId: function() {
+				return '19589576';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '19589576';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://observer.globe.gov/group/globe-observer/~/control_panel/manage?p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '19589576';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=19643903';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fobserver\x2eglobe\x2egov\x2fweb\x2fguest\x2fhome';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '10135';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getAvailableLangPath: function() {
+				return 'available_languages.jsp?browserId=other&amp;themeId=govglobeobservertheme_WAR_govglobeobservertheme&amp;colorSchemeId=01&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631480907373';
+			},
+			getCombine: function() {
+				return true;
+			},
+			getComboPath: function() {
+				return '/combo/?browserId=other&amp;minifierType=&amp;languageId=en_US&amp;b=7210&amp;t=1631479660919&amp;';
+			},
+			getDateFormat: function() {
+				return '%m/%d/%Y';
+			},
+			getEditorCKEditorPath: function() {
+				return '/o/frontend-editor-ckeditor-web';
+			},
+			getFilter: function() {
+				var filter = 'raw';
+
+				
+					
+						filter = 'min';
+					
+					
+
+				return filter;
+			},
+			getFilterConfig: fu... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20210912 22:22:48.341" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210912 22:22:48.089" endtime="20210912 22:22:48.341"/>
+</kw>
+<if>
+<branch type="IF" condition="${response.status_code}!=200">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed Status Code ${response.status_code} with link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:48.341" endtime="20210912 22:22:48.342"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:48.341" endtime="20210912 22:22:48.342"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:48.341" endtime="20210912 22:22:48.342"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:48.088" endtime="20210912 22:22:48.342"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed To Connect to link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:48.342" endtime="20210912 22:22:48.342"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:48.342" endtime="20210912 22:22:48.342"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:48.088" endtime="20210912 22:22:48.342"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:47.500" endtime="20210912 22:22:48.342"/>
+</iter>
+<iter>
+<var name="${link}">http://www.globe.gov/</var>
+<kw name="Strip String" library="String">
+<var>${link}</var>
+<arg>${link}</arg>
+<arg>mode=right</arg>
+<arg>characters=.</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20210912 22:22:48.342" level="INFO">${link} = http://www.globe.gov/</msg>
+<status status="PASS" starttime="20210912 22:22:48.342" endtime="20210912 22:22:48.342"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210912 22:22:48.342" level="INFO">Creating Session using : alias=testLink, url=http://www.globe.gov/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210912 22:22:48.342" endtime="20210912 22:22:48.343"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${canConnect}</var>
+<arg>GET On Session</arg>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Get On Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:49.355" level="INFO">GET Request : url=http://www.globe.gov/ (redirected) 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:49.356" level="INFO">GET Response : url=https://www.globe.gov/ 
+ status=200, reason= 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:48 GMT', 'Content-Type': 'text/html;charset=UTF-8', 'Content-Length': '39433', 'Connection': 'keep-alive', 'Server': 'Apache TomcatG', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Access-Control-Allow-Origin': '*', 'X-OneAgent-JS-Injection': 'true', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '1', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Liferay-Portal': 'Liferay Digital Experience Platform', 'Set-Cookie': 'AWSALB=Z2jSnY+mTRP8RwleBlVjZtBcreBAy+LoWFBw1VU46aI7U2DUIoxJYIE5t7FBvWTq+qoNwKEAOdcrw2SyFNRLsGcvI++Y5lqEkEqccGjYyvsGchmofq+Fp2FmbG2b; Expires=Mon, 20 Sep 2021 05:22:48 GMT; Path=/, AWSALBCORS=Z2jSnY+mTRP8RwleBlVjZtBcreBAy+LoWFBw1VU46aI7U2DUIoxJYIE5t7FBvWTq+qoNwKEAOdcrw2SyFNRLsGcvI++Y5lqEkEqccGjYyvsGchmofq+Fp2FmbG2b; Expires=Mon, 20 Sep 2021 05:22:48 GMT; Path=/; SameSite=None, JSESSIONID=99BE7688B5330712C3D2D0897FDBB722; Path=/; Secure; HttpOnly, COOKIE_SUPPORT=true; Expires=Tue, 13-Sep-2022 05:22:48 GMT; Path=/; Secure; HttpOnly, GUEST_LANGUAGE_ID=en_US; Expires=Tue, 13-Sep-2022 05:22:48 GMT; Path=/; Secure; HttpOnly', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Server-Timing': 'dtRpid;desc="126553306"'} 
+ body=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			&lt;!DOCTYPE html&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;html class="ltr" dir="ltr" lang="en-US"&gt;
+
+&lt;head&gt;
+	&lt;title&gt;GLOBE Home Page - GLOBE.gov&lt;/title&gt;
+
+	&lt;meta content="initial-scale=1.0, width=device-width" name="viewport" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;meta content="text/html; charset=UTF-8" http-equiv="content-type" /&gt;
+
+
+
+
+
+
+
+
+
+&lt;meta content="The Global Learning and Observation to Benefit the Environment (GLOBE) program is a worldwide hands-on, primary and secondary school-based science and education program." lang="en-US" name="description" /&gt;&lt;meta content="GLOBE,GLOBE Program,Student Science,Science Education, free" lang="en-US" name="keywords" /&gt;
+
+
+&lt;script type="text/javascript" src="/ruxitagentjs_ICA27SVfhjqrux_10223210811140219.js" data-dtconfig="app=632d46d7945593bd|rcdec=1209600000|featureHash=ICA27SVfhjqrux|vcv=2|rdnt=1|uxrgce=1|bp=3|srmcrv=10|cuc=c7d5zp0e|mel=100000|dpvc=1|md=mdcc1=a#username,mdcc2=cUSER_UUID|ssv=4|lastModification=1631293850650|dtVersion=10223210811140219|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/ruxitagentjs_ICA27SVfhjqrux_10223210811140219.js|reportUrl=/rb_bf84265lld|rid=RID_2418|rpid=126553306|domain=globe.gov"&gt;&lt;/script&gt;&lt;link data-senna-track="permanent" href="/o/frontend-theme-font-awesome-web/css/main.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script data-senna-track="permanent" src="/combo?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631479678212&amp;/o/frontend-js-jquery-web/jquery/jquery.min.js&amp;/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&amp;/o/frontend-js-jquery-web/jquery/collapsible_search.js&amp;/o/frontend-js-jquery-web/jquery/fm.js&amp;/o/frontend-js-jquery-web/jquery/form.js&amp;/o/frontend-js-jquery-web/jquery/popper.min.js&amp;/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"&gt;&lt;/script&gt;
+
+
+&lt;link href="https://www.globe.gov/o/gov-globe-main-theme/images/favicon.ico" rel="icon" /&gt;
+
+
+
+
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov" rel="canonical" /&gt;
+			
+		
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/es/" hreflang="es-ES" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/ru/" hreflang="ru-RU" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/fr/" hreflang="fr-FR" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov" hreflang="en-US" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/de/" hreflang="de-DE" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov" hreflang="x-default" rel="alternate" /&gt;
+			
+			
+
+	
+
+
+
+
+
+&lt;link class="lfr-css-file" data-senna-track="temporary" href="https://www.globe.gov/o/gov-globe-main-theme/css/clay.css?browserId=other&amp;amp;themeId=govglobemain_WAR_govglobemaintheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479740000" id="liferayAUICSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+&lt;link data-senna-track="temporary" href="/o/frontend-css-web/main.css?browserId=other&amp;amp;themeId=govglobemain_WAR_govglobemaintheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479657027" id="liferayPortalCSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+	
+
+
+
+	
+
+		&lt;link data-senna-track="temporary" href="/combo?browserId=other&amp;amp;minifierType=&amp;amp;themeId=govglobemain_WAR_govglobemaintheme&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_globeNowNews:%2Fcss%2Fmain.css&amp;amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_loginD:%2Fcss%2Fmain.css&amp;amp;com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_common_portlet_NavigationPortlet:%2Fcss%2Fnav.css&amp;amp;gov_globe_home_exploreLearnEarthPortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_GlobeNowPortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_GlobeNowPortlet:%2Fjs%2Ffullcalendar%2Ffullcalendar.min.css&amp;amp;gov_globe_home_portlet_GlobePeoplePortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_GlobeYourRegion:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_LearnAboutGlobePortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_WebGLGlobePortlet:%2Fcss%2Fmain.css&amp;amp;recentmeasurements_WAR_globegovmeasurementsportlet:%2Fcss%2Frecent-measurements-ticker.css&amp;amp;recentmeasurementsmap_WAR_globegovmeasurementsportlet:%2Fcss%2Fmain.css&amp;amp;t=1631479740000" id="d0a1781a" rel="stylesheet" type="text/css" /&gt;
+
+	
+
+
+
+
+
+
+
+&lt;script data-senna-track="temporary" type="text/javascript"&gt;
+	// &lt;![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return true;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			null
+
+			
+
+			
+		];
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			NTLM_AUTH_ENABLED: false,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 104857600
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '1';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/guest/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/home';
+				},
+				getLayoutURL: function() {
+					return 'https://www.globe.gov/home';
+				},
+				getParentLayoutId: function() {
+					return '0';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'en-US';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fwww\x2eglobe\x2egov';
+			},
+			getCDNBaseURL: function() {
+				return 'https://www.globe.gov';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '10165';
+			},
+			getCompanyId: function() {
+				return '10132';
+			},
+			getDefaultLanguageId: function() {
+				return 'en_US';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'en_US';
+			},
+			getParentGroupId: function() {
+				return '10157';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://www.globe.gov/o/gov-globe-main-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/gov-globe-main-theme';
+			},
+			getPlid: function() {
+				return '10160';
+			},
+			getPortalURL: function() {
+				return 'https://www.globe.gov';
+			},
+			getScopeGroupId: function() {
+				return '10157';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '10157';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://www.globe.gov/group/guest/~/control_panel/manage?p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '10157';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=10160';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fwww\x2eglobe\x2egov\x2fweb\x2fguest\x2fhome';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '10135';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getAvailableLangPath: func... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<status status="PASS" starttime="20210912 22:22:48.343" endtime="20210912 22:22:49.356"/>
+</kw>
+<msg timestamp="20210912 22:22:49.356" level="INFO">${canConnect} = True</msg>
+<status status="PASS" starttime="20210912 22:22:48.343" endtime="20210912 22:22:49.356"/>
+</kw>
+<if>
+<branch type="IF" condition="${canConnect}">
+<kw name="Get On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:50.009" level="INFO">GET Request : url=http://www.globe.gov/ (redirected) 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'dtCookie=v_4_srv_6_sn_32EF0E9AAED52EE421DB6B685A20D8C0_perc_100000_ol_0_mul_1_app-3A632d46d7945593bd_1; AWSALB=Z2jSnY+mTRP8RwleBlVjZtBcreBAy+LoWFBw1VU46aI7U2DUIoxJYIE5t7FBvWTq+qoNwKEAOdcrw2SyFNRLsGcvI++Y5lqEkEqccGjYyvsGchmofq+Fp2FmbG2b; AWSALBCORS=Z2jSnY+mTRP8RwleBlVjZtBcreBAy+LoWFBw1VU46aI7U2DUIoxJYIE5t7FBvWTq+qoNwKEAOdcrw2SyFNRLsGcvI++Y5lqEkEqccGjYyvsGchmofq+Fp2FmbG2b'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:50.009" level="INFO">GET Response : url=https://www.globe.gov/ 
+ status=200, reason= 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:49 GMT', 'Content-Type': 'text/html;charset=UTF-8', 'Content-Length': '39436', 'Connection': 'keep-alive', 'Server': 'Apache TomcatG', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Access-Control-Allow-Origin': '*', 'X-OneAgent-JS-Injection': 'true', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '1', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Liferay-Portal': 'Liferay Digital Experience Platform', 'Set-Cookie': 'AWSALB=6mkPYAqZL+t/7xkXYKWUZSElSnXXcRd/LM5c5fmmbwU9fshPvBiQWJO/ccEzaYUMetvU1RBTz1ubYsplDZXSlJyZ4CKaxmwIWpeOiJusuXkQoB8QDGeQT6vqxBki; Expires=Mon, 20 Sep 2021 05:22:48 GMT; Path=/, AWSALBCORS=6mkPYAqZL+t/7xkXYKWUZSElSnXXcRd/LM5c5fmmbwU9fshPvBiQWJO/ccEzaYUMetvU1RBTz1ubYsplDZXSlJyZ4CKaxmwIWpeOiJusuXkQoB8QDGeQT6vqxBki; Expires=Mon, 20 Sep 2021 05:22:48 GMT; Path=/; SameSite=None', 'Vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'Server-Timing': 'dtRpid;desc="1709791983"'} 
+ body=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			&lt;!DOCTYPE html&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;html class="ltr" dir="ltr" lang="en-US"&gt;
+
+&lt;head&gt;
+	&lt;title&gt;GLOBE Home Page - GLOBE.gov&lt;/title&gt;
+
+	&lt;meta content="initial-scale=1.0, width=device-width" name="viewport" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;meta content="text/html; charset=UTF-8" http-equiv="content-type" /&gt;
+
+
+
+
+
+
+
+
+
+&lt;meta content="The Global Learning and Observation to Benefit the Environment (GLOBE) program is a worldwide hands-on, primary and secondary school-based science and education program." lang="en-US" name="description" /&gt;&lt;meta content="GLOBE,GLOBE Program,Student Science,Science Education, free" lang="en-US" name="keywords" /&gt;
+
+
+&lt;script type="text/javascript" src="/ruxitagentjs_ICA27SVfhjqrux_10223210811140219.js" data-dtconfig="app=632d46d7945593bd|rcdec=1209600000|featureHash=ICA27SVfhjqrux|vcv=2|rdnt=1|uxrgce=1|bp=3|srmcrv=10|cuc=c7d5zp0e|mel=100000|dpvc=1|md=mdcc1=a#username,mdcc2=cUSER_UUID|ssv=4|lastModification=1631293850650|dtVersion=10223210811140219|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/ruxitagentjs_ICA27SVfhjqrux_10223210811140219.js|reportUrl=/rb_bf84265lld|rid=RID_2418|rpid=1709791983|domain=globe.gov"&gt;&lt;/script&gt;&lt;link data-senna-track="permanent" href="/o/frontend-theme-font-awesome-web/css/main.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script data-senna-track="permanent" src="/combo?browserId=other&amp;minifierType=js&amp;languageId=en_US&amp;b=7210&amp;t=1631479678212&amp;/o/frontend-js-jquery-web/jquery/jquery.min.js&amp;/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&amp;/o/frontend-js-jquery-web/jquery/collapsible_search.js&amp;/o/frontend-js-jquery-web/jquery/fm.js&amp;/o/frontend-js-jquery-web/jquery/form.js&amp;/o/frontend-js-jquery-web/jquery/popper.min.js&amp;/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"&gt;&lt;/script&gt;
+
+
+&lt;link href="https://www.globe.gov/o/gov-globe-main-theme/images/favicon.ico" rel="icon" /&gt;
+
+
+
+
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov" rel="canonical" /&gt;
+			
+		
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/es/" hreflang="es-ES" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/ru/" hreflang="ru-RU" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/fr/" hreflang="fr-FR" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov" hreflang="en-US" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov/de/" hreflang="de-DE" rel="alternate" /&gt;
+			
+			
+
+	
+
+		
+			
+				&lt;link data-senna-track="temporary" href="https://www.globe.gov" hreflang="x-default" rel="alternate" /&gt;
+			
+			
+
+	
+
+
+
+
+
+&lt;link class="lfr-css-file" data-senna-track="temporary" href="https://www.globe.gov/o/gov-globe-main-theme/css/clay.css?browserId=other&amp;amp;themeId=govglobemain_WAR_govglobemaintheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479740000" id="liferayAUICSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+&lt;link data-senna-track="temporary" href="/o/frontend-css-web/main.css?browserId=other&amp;amp;themeId=govglobemain_WAR_govglobemaintheme&amp;amp;minifierType=css&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;t=1631479657027" id="liferayPortalCSS" rel="stylesheet" type="text/css" /&gt;
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+	
+
+
+
+	
+
+		&lt;link data-senna-track="temporary" href="/combo?browserId=other&amp;amp;minifierType=&amp;amp;themeId=govglobemain_WAR_govglobemaintheme&amp;amp;languageId=en_US&amp;amp;b=7210&amp;amp;com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_globeNowNews:%2Fcss%2Fmain.css&amp;amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_loginD:%2Fcss%2Fmain.css&amp;amp;com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fcss%2Fmain.css&amp;amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_common_portlet_NavigationPortlet:%2Fcss%2Fnav.css&amp;amp;gov_globe_home_exploreLearnEarthPortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_GlobeNowPortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_GlobeNowPortlet:%2Fjs%2Ffullcalendar%2Ffullcalendar.min.css&amp;amp;gov_globe_home_portlet_GlobePeoplePortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_GlobeYourRegion:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_LearnAboutGlobePortlet:%2Fcss%2Fmain.css&amp;amp;gov_globe_home_portlet_WebGLGlobePortlet:%2Fcss%2Fmain.css&amp;amp;recentmeasurements_WAR_globegovmeasurementsportlet:%2Fcss%2Frecent-measurements-ticker.css&amp;amp;recentmeasurementsmap_WAR_globegovmeasurementsportlet:%2Fcss%2Fmain.css&amp;amp;t=1631479740000" id="d0a1781a" rel="stylesheet" type="text/css" /&gt;
+
+	
+
+
+
+
+
+
+
+&lt;script data-senna-track="temporary" type="text/javascript"&gt;
+	// &lt;![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return true;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			null
+
+			
+
+			
+		];
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			NTLM_AUTH_ENABLED: false,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 104857600
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '1';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/guest/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/home';
+				},
+				getLayoutURL: function() {
+					return 'https://www.globe.gov/home';
+				},
+				getParentLayoutId: function() {
+					return '0';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'en-US';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fwww\x2eglobe\x2egov';
+			},
+			getCDNBaseURL: function() {
+				return 'https://www.globe.gov';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '10165';
+			},
+			getCompanyId: function() {
+				return '10132';
+			},
+			getDefaultLanguageId: function() {
+				return 'en_US';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'en_US';
+			},
+			getParentGroupId: function() {
+				return '10157';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://www.globe.gov/o/gov-globe-main-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/gov-globe-main-theme';
+			},
+			getPlid: function() {
+				return '10160';
+			},
+			getPortalURL: function() {
+				return 'https://www.globe.gov';
+			},
+			getScopeGroupId: function() {
+				return '10157';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '10157';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://www.globe.gov/group/guest/~/control_panel/manage?p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '10157';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=10160';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fwww\x2eglobe\x2egov\x2fweb\x2fguest\x2fhome';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '10135';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getAvailableLangPath: fun... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20210912 22:22:50.010" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210912 22:22:49.356" endtime="20210912 22:22:50.010"/>
+</kw>
+<if>
+<branch type="IF" condition="${response.status_code}!=200">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed Status Code ${response.status_code} with link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:50.010" endtime="20210912 22:22:50.010"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:50.010" endtime="20210912 22:22:50.010"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:50.010" endtime="20210912 22:22:50.010"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:49.356" endtime="20210912 22:22:50.010"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed To Connect to link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:50.010" endtime="20210912 22:22:50.010"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:50.010" endtime="20210912 22:22:50.010"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:49.356" endtime="20210912 22:22:50.010"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:48.342" endtime="20210912 22:22:50.010"/>
+</iter>
+<iter>
+<var name="${link}">http://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348</var>
+<kw name="Strip String" library="String">
+<var>${link}</var>
+<arg>${link}</arg>
+<arg>mode=right</arg>
+<arg>characters=.</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20210912 22:22:50.011" level="INFO">${link} = http://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348</msg>
+<status status="PASS" starttime="20210912 22:22:50.010" endtime="20210912 22:22:50.011"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210912 22:22:50.011" level="INFO">Creating Session using : alias=testLink, url=http://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210912 22:22:50.011" endtime="20210912 22:22:50.011"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${canConnect}</var>
+<arg>GET On Session</arg>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Get On Session" library="RequestsLibrary">
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:50.886" level="INFO">GET Request : url=http://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348 (redirected) 
+ path_url=/cgi-bin/details.cgi?aid=12348 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:50.886" level="INFO">GET Response : url=https://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:49 GMT', 'Server': 'Apache', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains;', 'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://platform.twitter.com https://api-public.addthis.com https://s7.addthis.com https://dap.digitalgov.gov https://www.google-analytics.com https://s.ytimg.com https://www.youtube.com; img-src 'self' data: https://m.addthisedge.com https://stats.g.doubleclick.net; media-src 'self' https://wwwyoutube.com; connect-src 'self' https://stats.g.doubleclick.net https://www.google-analytics.com; child-src 'self' https://s7.addthis.com https://www.youtube.com https://player.vimeo.com; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; object-src 'self';", 'Content-Length': '21535', 'Keep-Alive': 'timeout=15, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Language': 'en'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+		&lt;meta http-equiv=”last-modified” content=”2016-08-29”&gt;
+		&lt;title&gt;GMS: GLOBE Observer App Promo&lt;/title&gt;
+		&lt;!-- animation ID 12348 --&gt;
+		&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+		&lt;meta name="description" content="GLOBE Observer invites you to make environmental observations that complement NASA satellite observations to help scientists studying Earth and the global environment. Version 1.1 includes GLOBE Clouds, which allows you to photograph clouds and record sky observations and compare them with NASA satellite images. GLOBE is now the major source of human observations of clouds, which provide more information than automated systems. 
+
+Future versions of GLOBE Observer will add additional tools for you to use as a citizen environmental scientist.
+
+By using the GLOBE Observer app, you are joining the GLOBE community and contributing important scientific data to NASA and GLOBE, your local community, and students and scientists worldwide.  
+
+New and interested users are encouraged to go to observer.globe.gov to learn more about the GLOBE program, or learn more about the GLOBE Clouds protocol."&gt;
+		&lt;meta name="keywords" content="Clouds, Globe, HDTV, Earth, Science"&gt;
+		&lt;meta name="author" content="NASA's GMS"&gt;
+		&lt;meta name="DC.Date" scheme="ISO8601" content="2016-08-25"&gt;
+	
+		&lt;link href="/css_svs/bootstrap.min.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/custom-style.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/custom-fonts-non-main-page.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/bootstrap.3.2.0.feedback.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/bootstrap.3.3.5.embed-responsive.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/details.css" rel="stylesheet"&gt;
+	 
+		&lt;link rel="shortcut icon" href="/img_svs/favicon.ico"&gt;
+	&lt;script src="/js_svs/jquery.min.js"&gt;&lt;/script&gt;
+	&lt;script src="/js_svs/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+		&lt;div id="top-navbar"&gt;&lt;/div&gt;
+&lt;!-- end header --&gt;
+&lt;!-- begin content --&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="row visible-xs"&gt;
+        &lt;div class='col-xs-12'&gt;
+          &lt;br&gt;
+&lt;form class="form" role="form" action="/cgi-bin/search.cgi" id="search-xs" method="get"&gt;
+  &lt;label class="sr-only control-label" for="searchbox"&gt;Search All Stories...&lt;/label&gt;
+  &lt;div class="input-group"&gt;
+    &lt;input type="text" class="form-control" id="searchbox" placeholder="Search All Stories..." name="value"&gt;
+    &lt;span class="input-group-btn"&gt;
+	    &lt;button class="btn btn-default" type="submit" onclick='javascript:formSubmit("search-xs")'&gt;Search&lt;/button&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+        &lt;/div&gt;&lt;!--end column--&gt;
+      &lt;/div&gt;&lt;!--end row--&gt;
+      &lt;div class="row"&gt;
+&lt;!-- contentType is GMS. --&gt;
+        &lt;div class="col-sm-8 col-xs-12 pull-left background-white details-main-cols"&gt; &lt;!-- aka start left column --&gt;
+&lt;!-- keyword(s) --&gt;
+          &lt;a href="/cgi-bin/search.cgi?category=Earth"&gt;&lt;span class="tag"&gt;Earth&lt;/span&gt;&lt;/a&gt;&amp;nbsp;
+&lt;span class='idprint'&gt;ID: 12348&lt;/span&gt;
+&lt;!-- title --&gt;
+&lt;h1&gt;GLOBE Observer App Promo&lt;/h1&gt;
+          &lt;div class="byline-area-details"&gt;
+            &lt;div class="row"&gt;
+          &lt;div class="col-xs-9 byline-sm"&gt;
+&lt;!-- release date --&gt;
+          Released on August 25, 2016&lt;/div&gt; &lt;!-- ends col-xs-9 byline-sm --&gt;
+              &lt;div class="col-xs-3 share-items"&gt;
+                &lt;!-- AddThis Button BEGIN --&gt;
+                  &lt;div class="addthis_toolbox addthis_default_style addthis_16x16_style"&gt;
+                  &lt;a class="addthis_button_facebook"&gt;&lt;/a&gt;
+                  &lt;a class="addthis_button_twitter"&gt;&lt;/a&gt;
+                  &lt;a class="addthis_button_compact"&gt;&lt;/a&gt;&lt;a class="addthis_counter addthis_bubble_style"&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;script type="text/javascript" src="/js_svs/addthis-sandbox.js"&gt;&lt;/script&gt;
+                &lt;!-- AddThis Button END --&gt;
+            &lt;/div&gt;
+            &lt;div class="clearBoth"&gt;
+              &lt;hr&gt; 
+            &lt;/div&gt;
+          &lt;/div&gt; &lt;!-- end row --&gt;
+        &lt;/div&gt; &lt;!-- end byline-area --&gt;
+&lt;!-- Start of LeadItem --&gt;
+
+&lt;!-- grp: 12348.50404 --&gt;
+
+&lt;a id='50404' class='anchor-offset'&gt;&lt;/a&gt;
+&lt;!-- mode: movie --&gt;
+
+&lt;!-- A MOVIE GROUP GOES HERE.--&gt;
+&lt;!-- begin movie asset --&gt;
+&lt;!-- movie assets preview --&gt;
+          &lt;video class="asset-video" width="100%"
+          height="56%" poster="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.00373_print.jpg"
+          controls="controls" preload="metadata"&gt;
+          &lt;!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 --&gt;
+&lt;!-- movie assets *high.mp4 --&gt;
+&lt;!-- movie assets *other movie type that works with Chrome* --&gt;
+            &lt;source type="video/mp4" src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv.m4v" /&gt;
+&lt;!-- WebM/VP8 for Firefox4, Opera, and Chrome --&gt; 
+            &lt;source type="video/webm" src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.webm" /&gt; 
+			&lt;track label="English" kind="subtitles" srclang="en-US" src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.en_US.vtt" default /&gt;
+&lt;!-- Flash fallback for non-HTML5 browsers without JavaScript --&gt;
+              &lt;object width="100%" height="auto" type="application/x-shockwave-flash"
+              data="/loop/flashmediaelement.swf"&gt;
+                &lt;param name="movie" value="/loop/flashmediaelement.swf"&gt;
+&lt;!-- movie assets *high.mp4 --&gt;
+                &lt;param name="flashvars" value="controls=true&amp;amp;poster=myvideo.jpg&amp;amp;file=/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv.m4v"&gt;
+                &lt;!-- Image as a last resort --&gt;
+&lt;!-- movie assets poster frame --&gt;
+                &lt;img src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.00373_print.jpg" width="100%" height="auto" title="No video playback capabilities"&gt; 
+              &lt;/object&gt;
+          &lt;/video&gt;
+
+&lt;!-- movie assets *high.mp4 --&gt;
+          &lt;div class="asset-footer"&gt;
+            &lt;div class="asset-download"&gt;
+              &lt;div class="btn-group"&gt;
+                &lt;a class="btn btn-sm dropdown-toggle button-default offwhite-button-details" data-toggle="dropdown" href="#"&gt;Download Options &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+                &lt;ul class="dropdown-menu pull-right" id=""&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_ipod_sm.mp4"&gt;320x240 mpeg-4 (8.4 MB) 29.97 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv.m4v"&gt;1280x720 mpeg-4 (25.1 MB) 29.97 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.mpeg"&gt;1280x720 mpeg (166.7 MB) 59.94 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.mov"&gt;1280x720 quicktime (419.9 MB) 29.97 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.mov"&gt;1280x720 quicktime (662.4 MB) 59.94 fps ProRes version for Video Editors&lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.en_US.vtt"&gt; WebVTT caption file (0.0 KB)  &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.en_US.srt"&gt; SubRip caption file (for Facebook and YouTube) (0.0 KB)  &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.00373_print.jpg"&gt;1024x576 jpeg (103.0 KB)  Still Image&lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv_subtitles.m4v"&gt;1280x720 mpeg-4 (25.1 MB) 29.97 fps *&lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li class="disabled"&gt;&lt;a&gt;&lt;small class="download-instruction"&gt;Right click movies to download them if they automatically play in your browser.&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li class="disabled"&gt;&lt;a&gt;&lt;small class="download-instruction"&gt;* Embedded subtitles will currently only play in the Safari browser.&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="asset-caption"&gt;&lt;b&gt;GLOBE Observer App Promo&lt;/b&gt;&lt;p&gt;Music Credit: Killer Tracks&lt;br&gt;&lt;i&gt;KOK_2402_61_The_Hopscotch_Riddle_Benoliel_Pelouse_885084&lt;/i&gt;&lt;/div&gt;
+          &lt;/div&gt;
+&lt;!-- end movie asset --&gt;
+&lt;!-- End of LeadItem --&gt;
+
+&lt;!-- abstract --&gt;
+&lt;div class="abstractwrapper"&gt;&lt;abstracttext&gt;GLOBE Observer invites you to make environmental observations that complement NASA satellite observations to help scientists studying Earth and the global environment. Version 1.1 includes GLOBE Clouds, which allows you to photograph clouds and record sky observations and compare them with NASA satellite images. GLOBE is now the major source of human observations of clouds, which provide more information than automated systems. &lt;br&gt;&lt;br&gt;Future versions of GLOBE Observer will add additional tools for you to use as a citizen environmental scientist.&lt;br&gt;&lt;br&gt;By using the GLOBE Observer app, you are joining the GLOBE community and contributing important scientific data to NASA and GLOBE, your local community, and students and scientists worldwide.  &lt;br&gt;&lt;br&gt;New and interested users are encouraged to go to observer.globe.gov to learn more about the GLOBE program, or learn more about the GLOBE Clouds protocol.&lt;/abstracttext&gt;&lt;/div&gt;
+&lt;a name='related'&gt;&amp;nbsp;&lt;/a&gt;
+
+          &lt;hr&gt;
+          &lt;h4&gt;Related&lt;/h4&gt;
+          &lt;div class="row"&gt;
+            &lt;div class="col-md-3 col-sm-4 col-xs-6 related-media-tile"&gt;
+              &lt;a href="/12686"&gt;&lt;img src="/vis/a010000/a012600/a012686/Screen_Shot_2017-08-14_at_1.55.28_PM_searchweb.png"&gt;&lt;/a&gt;
+              &lt;div class="alink rm-title rm-r-xs-1 rm-r-sm-1 rm-r-md-1"&gt;&lt;a href="/12686"&gt;Help NASA Collect Data During The Eclipse With GLOBE Obse... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<status status="PASS" starttime="20210912 22:22:50.011" endtime="20210912 22:22:50.887"/>
+</kw>
+<msg timestamp="20210912 22:22:50.887" level="INFO">${canConnect} = True</msg>
+<status status="PASS" starttime="20210912 22:22:50.011" endtime="20210912 22:22:50.887"/>
+</kw>
+<if>
+<branch type="IF" condition="${canConnect}">
+<kw name="Get On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>testLink</arg>
+<arg>${link}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20210912 22:22:51.343" level="INFO">GET Request : url=http://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348 (redirected) 
+ path_url=/cgi-bin/details.cgi?aid=12348 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210912 22:22:51.343" level="INFO">GET Response : url=https://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=12348 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 13 Sep 2021 05:22:50 GMT', 'Server': 'Apache', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains;', 'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://platform.twitter.com https://api-public.addthis.com https://s7.addthis.com https://dap.digitalgov.gov https://www.google-analytics.com https://s.ytimg.com https://www.youtube.com; img-src 'self' data: https://m.addthisedge.com https://stats.g.doubleclick.net; media-src 'self' https://wwwyoutube.com; connect-src 'self' https://stats.g.doubleclick.net https://www.google-analytics.com; child-src 'self' https://s7.addthis.com https://www.youtube.com https://player.vimeo.com; style-src 'self' 'unsafe-inline'; frame-ancestors 'self'; object-src 'self';", 'Content-Length': '21535', 'Keep-Alive': 'timeout=15, max=99', 'Connection': 'Keep-Alive', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Language': 'en'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+		&lt;meta http-equiv=”last-modified” content=”2016-08-29”&gt;
+		&lt;title&gt;GMS: GLOBE Observer App Promo&lt;/title&gt;
+		&lt;!-- animation ID 12348 --&gt;
+		&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+		&lt;meta name="description" content="GLOBE Observer invites you to make environmental observations that complement NASA satellite observations to help scientists studying Earth and the global environment. Version 1.1 includes GLOBE Clouds, which allows you to photograph clouds and record sky observations and compare them with NASA satellite images. GLOBE is now the major source of human observations of clouds, which provide more information than automated systems. 
+
+Future versions of GLOBE Observer will add additional tools for you to use as a citizen environmental scientist.
+
+By using the GLOBE Observer app, you are joining the GLOBE community and contributing important scientific data to NASA and GLOBE, your local community, and students and scientists worldwide.  
+
+New and interested users are encouraged to go to observer.globe.gov to learn more about the GLOBE program, or learn more about the GLOBE Clouds protocol."&gt;
+		&lt;meta name="keywords" content="Clouds, Globe, HDTV, Earth, Science"&gt;
+		&lt;meta name="author" content="NASA's GMS"&gt;
+		&lt;meta name="DC.Date" scheme="ISO8601" content="2016-08-25"&gt;
+	
+		&lt;link href="/css_svs/bootstrap.min.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/custom-style.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/custom-fonts-non-main-page.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/bootstrap.3.2.0.feedback.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/bootstrap.3.3.5.embed-responsive.css" rel="stylesheet"&gt;
+		&lt;link href="/css_svs/details.css" rel="stylesheet"&gt;
+	 
+		&lt;link rel="shortcut icon" href="/img_svs/favicon.ico"&gt;
+	&lt;script src="/js_svs/jquery.min.js"&gt;&lt;/script&gt;
+	&lt;script src="/js_svs/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+		&lt;div id="top-navbar"&gt;&lt;/div&gt;
+&lt;!-- end header --&gt;
+&lt;!-- begin content --&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="row visible-xs"&gt;
+        &lt;div class='col-xs-12'&gt;
+          &lt;br&gt;
+&lt;form class="form" role="form" action="/cgi-bin/search.cgi" id="search-xs" method="get"&gt;
+  &lt;label class="sr-only control-label" for="searchbox"&gt;Search All Stories...&lt;/label&gt;
+  &lt;div class="input-group"&gt;
+    &lt;input type="text" class="form-control" id="searchbox" placeholder="Search All Stories..." name="value"&gt;
+    &lt;span class="input-group-btn"&gt;
+	    &lt;button class="btn btn-default" type="submit" onclick='javascript:formSubmit("search-xs")'&gt;Search&lt;/button&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+        &lt;/div&gt;&lt;!--end column--&gt;
+      &lt;/div&gt;&lt;!--end row--&gt;
+      &lt;div class="row"&gt;
+&lt;!-- contentType is GMS. --&gt;
+        &lt;div class="col-sm-8 col-xs-12 pull-left background-white details-main-cols"&gt; &lt;!-- aka start left column --&gt;
+&lt;!-- keyword(s) --&gt;
+          &lt;a href="/cgi-bin/search.cgi?category=Earth"&gt;&lt;span class="tag"&gt;Earth&lt;/span&gt;&lt;/a&gt;&amp;nbsp;
+&lt;span class='idprint'&gt;ID: 12348&lt;/span&gt;
+&lt;!-- title --&gt;
+&lt;h1&gt;GLOBE Observer App Promo&lt;/h1&gt;
+          &lt;div class="byline-area-details"&gt;
+            &lt;div class="row"&gt;
+          &lt;div class="col-xs-9 byline-sm"&gt;
+&lt;!-- release date --&gt;
+          Released on August 25, 2016&lt;/div&gt; &lt;!-- ends col-xs-9 byline-sm --&gt;
+              &lt;div class="col-xs-3 share-items"&gt;
+                &lt;!-- AddThis Button BEGIN --&gt;
+                  &lt;div class="addthis_toolbox addthis_default_style addthis_16x16_style"&gt;
+                  &lt;a class="addthis_button_facebook"&gt;&lt;/a&gt;
+                  &lt;a class="addthis_button_twitter"&gt;&lt;/a&gt;
+                  &lt;a class="addthis_button_compact"&gt;&lt;/a&gt;&lt;a class="addthis_counter addthis_bubble_style"&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;script type="text/javascript" src="/js_svs/addthis-sandbox.js"&gt;&lt;/script&gt;
+                &lt;!-- AddThis Button END --&gt;
+            &lt;/div&gt;
+            &lt;div class="clearBoth"&gt;
+              &lt;hr&gt; 
+            &lt;/div&gt;
+          &lt;/div&gt; &lt;!-- end row --&gt;
+        &lt;/div&gt; &lt;!-- end byline-area --&gt;
+&lt;!-- Start of LeadItem --&gt;
+
+&lt;!-- grp: 12348.50404 --&gt;
+
+&lt;a id='50404' class='anchor-offset'&gt;&lt;/a&gt;
+&lt;!-- mode: movie --&gt;
+
+&lt;!-- A MOVIE GROUP GOES HERE.--&gt;
+&lt;!-- begin movie asset --&gt;
+&lt;!-- movie assets preview --&gt;
+          &lt;video class="asset-video" width="100%"
+          height="56%" poster="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.00373_print.jpg"
+          controls="controls" preload="metadata"&gt;
+          &lt;!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 --&gt;
+&lt;!-- movie assets *high.mp4 --&gt;
+&lt;!-- movie assets *other movie type that works with Chrome* --&gt;
+            &lt;source type="video/mp4" src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv.m4v" /&gt;
+&lt;!-- WebM/VP8 for Firefox4, Opera, and Chrome --&gt; 
+            &lt;source type="video/webm" src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.webm" /&gt; 
+			&lt;track label="English" kind="subtitles" srclang="en-US" src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.en_US.vtt" default /&gt;
+&lt;!-- Flash fallback for non-HTML5 browsers without JavaScript --&gt;
+              &lt;object width="100%" height="auto" type="application/x-shockwave-flash"
+              data="/loop/flashmediaelement.swf"&gt;
+                &lt;param name="movie" value="/loop/flashmediaelement.swf"&gt;
+&lt;!-- movie assets *high.mp4 --&gt;
+                &lt;param name="flashvars" value="controls=true&amp;amp;poster=myvideo.jpg&amp;amp;file=/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv.m4v"&gt;
+                &lt;!-- Image as a last resort --&gt;
+&lt;!-- movie assets poster frame --&gt;
+                &lt;img src="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.00373_print.jpg" width="100%" height="auto" title="No video playback capabilities"&gt; 
+              &lt;/object&gt;
+          &lt;/video&gt;
+
+&lt;!-- movie assets *high.mp4 --&gt;
+          &lt;div class="asset-footer"&gt;
+            &lt;div class="asset-download"&gt;
+              &lt;div class="btn-group"&gt;
+                &lt;a class="btn btn-sm dropdown-toggle button-default offwhite-button-details" data-toggle="dropdown" href="#"&gt;Download Options &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+                &lt;ul class="dropdown-menu pull-right" id=""&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_ipod_sm.mp4"&gt;320x240 mpeg-4 (8.4 MB) 29.97 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv.m4v"&gt;1280x720 mpeg-4 (25.1 MB) 29.97 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.mpeg"&gt;1280x720 mpeg (166.7 MB) 59.94 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.mov"&gt;1280x720 quicktime (419.9 MB) 29.97 fps &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.mov"&gt;1280x720 quicktime (662.4 MB) 59.94 fps ProRes version for Video Editors&lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.en_US.vtt"&gt; WebVTT caption file (0.0 KB)  &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser.en_US.srt"&gt; SubRip caption file (for Facebook and YouTube) (0.0 KB)  &lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_youtube.00373_print.jpg"&gt;1024x576 jpeg (103.0 KB)  Still Image&lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;a href="/vis/a010000/a012300/a012348/12348_GLOBE_App_Teaser_appletv_subtitles.m4v"&gt;1280x720 mpeg-4 (25.1 MB) 29.97 fps *&lt;/a&gt; 
+                  &lt;/li&gt;
+                  &lt;li class="disabled"&gt;&lt;a&gt;&lt;small class="download-instruction"&gt;Right click movies to download them if they automatically play in your browser.&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li class="disabled"&gt;&lt;a&gt;&lt;small class="download-instruction"&gt;* Embedded subtitles will currently only play in the Safari browser.&lt;/small&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="asset-caption"&gt;&lt;b&gt;GLOBE Observer App Promo&lt;/b&gt;&lt;p&gt;Music Credit: Killer Tracks&lt;br&gt;&lt;i&gt;KOK_2402_61_The_Hopscotch_Riddle_Benoliel_Pelouse_885084&lt;/i&gt;&lt;/div&gt;
+          &lt;/div&gt;
+&lt;!-- end movie asset --&gt;
+&lt;!-- End of LeadItem --&gt;
+
+&lt;!-- abstract --&gt;
+&lt;div class="abstractwrapper"&gt;&lt;abstracttext&gt;GLOBE Observer invites you to make environmental observations that complement NASA satellite observations to help scientists studying Earth and the global environment. Version 1.1 includes GLOBE Clouds, which allows you to photograph clouds and record sky observations and compare them with NASA satellite images. GLOBE is now the major source of human observations of clouds, which provide more information than automated systems. &lt;br&gt;&lt;br&gt;Future versions of GLOBE Observer will add additional tools for you to use as a citizen environmental scientist.&lt;br&gt;&lt;br&gt;By using the GLOBE Observer app, you are joining the GLOBE community and contributing important scientific data to NASA and GLOBE, your local community, and students and scientists worldwide.  &lt;br&gt;&lt;br&gt;New and interested users are encouraged to go to observer.globe.gov to learn more about the GLOBE program, or learn more about the GLOBE Clouds protocol.&lt;/abstracttext&gt;&lt;/div&gt;
+&lt;a name='related'&gt;&amp;nbsp;&lt;/a&gt;
+
+          &lt;hr&gt;
+          &lt;h4&gt;Related&lt;/h4&gt;
+          &lt;div class="row"&gt;
+            &lt;div class="col-md-3 col-sm-4 col-xs-6 related-media-tile"&gt;
+              &lt;a href="/12686"&gt;&lt;img src="/vis/a010000/a012600/a012686/Screen_Shot_2017-08-14_at_1.55.28_PM_searchweb.png"&gt;&lt;/a&gt;
+              &lt;div class="alink rm-title rm-r-xs-1 rm-r-sm-1 rm-r-md-1"&gt;&lt;a href="/12686"&gt;Help NASA Collect Data During The Eclipse With GLOBE Obse... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20210912 22:22:51.344" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210912 22:22:50.887" endtime="20210912 22:22:51.344"/>
+</kw>
+<if>
+<branch type="IF" condition="${response.status_code}!=200">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed Status Code ${response.status_code} with link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:51.344" endtime="20210912 22:22:51.344"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:51.344" endtime="20210912 22:22:51.344"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:51.344" endtime="20210912 22:22:51.344"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:50.887" endtime="20210912 22:22:51.344"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" library="BuiltIn">
+<arg>Failed To Connect to link: ${link}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20210912 22:22:51.344" endtime="20210912 22:22:51.344"/>
+</kw>
+<status status="NOT RUN" starttime="20210912 22:22:51.344" endtime="20210912 22:22:51.344"/>
+</branch>
+<status status="PASS" starttime="20210912 22:22:50.887" endtime="20210912 22:22:51.344"/>
+</if>
+<status status="PASS" starttime="20210912 22:22:50.010" endtime="20210912 22:22:51.344"/>
+</iter>
+<status status="PASS" starttime="20210912 22:22:47.500" endtime="20210912 22:22:51.345"/>
+</for>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20210912 22:22:51.345" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20210912 22:22:51.345" endtime="20210912 22:22:51.346"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:42.468" endtime="20210912 22:22:51.346"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20210912 22:22:51.346" endtime="20210912 22:22:53.410"/>
+</kw>
+<status status="PASS" starttime="20210912 22:22:22.086" endtime="20210912 22:22:53.410"/>
+</test>
+<status status="PASS" starttime="20210912 22:22:21.945" endtime="20210912 22:22:53.411"/>
+</suite>
+<status status="PASS" starttime="20210912 22:22:21.925" endtime="20210912 22:22:55.655"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="About">Tests.About</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
