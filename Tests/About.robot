@@ -74,7 +74,6 @@ Each link in main page content should be valid
             END
         ELSE
             Capture Element Screenshot      xpath=(${BodyContent_Column1}//a[starts-with(@href, "http")])[${index} + 1]/ancestor::div[1]    filename=${TEST NAME}-broken link.png
-            Log to console                  Failed to connect to link at pictured element: file:///${OUTPUT DIR}\\${TEST NAME}-broken link.png
             Fail                            Failed To Connect to link: ${link}
         END
         ${index}=    Evaluate    ${index} + 1

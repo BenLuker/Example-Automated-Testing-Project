@@ -1,5 +1,8 @@
 @echo off
 
+if exist Results/ rmdir /s /q "Results"
+MKDIR Results
+
 if exist "Virtual Environment"/ (echo Removing old virtual environment... & rmdir /s /q "Virtual Environment")
 echo Creating new virtual environment...
 python -m venv "Virtual Environment"
