@@ -1,8 +1,5 @@
 *** Settings ***
 Library         SeleniumLibrary
-Library         RequestsLibrary
-Library         String
-Library         Collections
 Resource        ../Resources/Observer.robot
 Variables       ../Resources/WebElements.py
 
@@ -12,6 +9,8 @@ Test Teardown  Close All Browsers
 *** Test Cases ***
 
 About Page
+    Click Link in Navbar    About
+    Wait Until Location Is  https://observer.globe.gov/about
     Click Link in Navbar    About     About GLOBE Observer
     Wait Until Location Is  https://observer.globe.gov/about
     Each link in main page content should be valid
@@ -51,34 +50,6 @@ Get The App
     Each link in main page content should be valid
 
 *** Keywords ***
-
-Each link in main page content should be valid
-    Wait Until Page Finishes Loading
-    ${element_list}=    get webelements     ${BodyContent_Column1}//a[starts-with(@href, "http")]
-    ${href_list}=       Evaluate            [item.get_attribute('href') for item in $element_list]
-    ${broken_links}=    Create List
-    ${index}=           Set Variable        0
-    FOR    ${link}    IN    @{href_list}
-        ${link}=            Strip String    ${link}         mode=right      characters=.
-        Create Session      testLink        ${link}         disable_warnings=1
-        ${canConnect}=      Run Keyword And Return Status   GET On Session  testLink    ${link}
-        IF  ${canConnect}
-            ${response}=    GET On Session  testLink    ${link}
-            IF  ${response.status_code}!=200
-                Append To List              ${broken_links}             ${link}
-                ${broken_length}=           Get length                  ${broken_links}
-                Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
-            END
-        ELSE
-            Append To List              ${broken_links}             ${link}
-            ${broken_length}=           Get length                  ${broken_links}
-            Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
-        END
-        ${index}=    Evaluate    ${index} + 1
-    END
-    Delete All Sessions
-    ${broken_length}=   Get length                  ${broken_links}
-    Run Keyword If	    ${broken_length} > 0        Fail                One or more broken links discovered: ${broken_links}
 
 Click the "Download on the App Store" button
     Wait Until Element Is Visible   ${GetTheApp_AppleAppStoreButton}
