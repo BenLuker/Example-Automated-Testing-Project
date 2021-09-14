@@ -37,3 +37,5 @@ def UpdateSuiteWithResults(client, run, suiteName, tests):
         
         # Upload results
         client.send_post('add_results_for_cases/' + str(run), { 'results': results })
+
+        print("Results Uploaded Sucessfully")
