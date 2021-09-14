@@ -21,7 +21,7 @@ def UpdateSuiteWithResults(client, run, suiteName, tests):
 
     # Only proceed if suite was found
     if not suite:
-        logging.warning("Could not find suite with the title: " + suite + ". Results will not be updated.\n")
+        logging.warning("Could not find suite with the title: " + suiteName + ". Results will not be updated.\n")
     
     else:
         print("Uploading Results to Testrail...\n")
