@@ -56,29 +56,29 @@ Each link in main page content should be valid
     Wait Until Page Finishes Loading
     ${element_list}=    get webelements     ${BodyContent_Column1}//a[starts-with(@href, "http")]
     ${href_list}=       Evaluate            [item.get_attribute('href') for item in $element_list]
+    ${broken_links}=    Create List
     ${index}=           Set Variable        0
     FOR    ${link}    IN    @{href_list}
-        # Scroll to link if not headless
-        IF  '${headless}' == 'False'
-            ${element}=    Get From List    ${element_list}             ${index}
-            Run Keyword And Ignore Error    Scroll Element Into View    ${element}
-        END
-        
         ${link}=            Strip String    ${link}         mode=right      characters=.
         Create Session      testLink        ${link}         disable_warnings=1
         ${canConnect}=      Run Keyword And Return Status   GET On Session  testLink    ${link}
         IF  ${canConnect}
             ${response}=    GET On Session  testLink    ${link}
-            IF  ${response.status_code}!=200 
-                Fail     Failed Status Code ${response.status_code} with link: ${link}   
+            IF  ${response.status_code}!=200
+                Append To List              ${broken_links}             ${link}
+                ${broken_length}=           Get length                  ${broken_links}
+                Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
             END
         ELSE
-            Capture Element Screenshot      xpath=(${BodyContent_Column1}//a[starts-with(@href, "http")])[${index} + 1]/ancestor::div[1]    filename=${TEST NAME}-broken link.png
-            Fail                            Failed To Connect to link: ${link}
+            Append To List              ${broken_links}             ${link}
+            ${broken_length}=           Get length                  ${broken_links}
+            Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
         END
         ${index}=    Evaluate    ${index} + 1
     END
     Delete All Sessions
+    ${broken_length}=   Get length                  ${broken_links}
+    Run Keyword If	    ${broken_length} > 0        Fail                One or more broken links discovered: ${broken_links}
 
 Click the "Download on the App Store" button
     Wait Until Element Is Visible   ${GetTheApp_AppleAppStoreButton}
