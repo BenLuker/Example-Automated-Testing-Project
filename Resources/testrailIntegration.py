@@ -24,7 +24,7 @@ def UpdateSuiteWithResults(client, run, suiteName, tests):
         logging.warning("Could not find suite with the title: " + suiteName + ". Results will not be updated.\n")
     
     else:
-        print("Uploading Results to Testrail...\n")
+        print("Uploading Results to Testrail...")
 
         # Get all cases in suite
         cases = client.send_get('get_cases/' + str(project) + '&section_id=' + str(suite['id']))
@@ -38,4 +38,4 @@ def UpdateSuiteWithResults(client, run, suiteName, tests):
         # Upload results
         client.send_post('add_results_for_cases/' + str(run), { 'results': results })
 
-        print("Results Uploaded Sucessfully")
+        print("Results Uploaded Sucessfully\n")
