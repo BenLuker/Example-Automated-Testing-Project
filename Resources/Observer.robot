@@ -50,35 +50,34 @@ Click Link in Navbar
 
 Each link in main page content should be valid
     Wait Until Page Finishes Loading
+    ${location}=        Get Location
     ${element_list}=    get webelements     ${BodyContent_Column1}//a[starts-with(@href, "http")]
     ${href_list}=       Evaluate            [item.get_attribute('href') for item in $element_list]
     ${broken_links}=    Create List
     ${index}=           Set Variable        0
     FOR    ${link}    IN    @{href_list}
-        ${link}=            Strip String    ${link}         mode=right      characters=.
-        Create Session      testLink        ${link}         disable_warnings=1
-        ${canConnect}=      Run Keyword And Return Status   GET On Session  testLink    ${link}
-        IF  ${canConnect}
-            ${response}=    GET On Session  testLink    ${link}
-            IF  ${response.status_code}!=200
-                Append To List                  ${broken_links}             ${link}
-                ${broken_length}=               Get length                  ${broken_links}
-                Run Keyword And Ignore Error    Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
-            END
-        ELSE
-            ${status}=  Run Keyword And Return Status  Manually Test Link   ${link}
-            Close Browser
-            IF  '${status}'=='Fail'
-                Append To List                  ${broken_links}             ${link}
-                ${broken_length}=               Get length                  ${broken_links}
-                Run Keyword And Ignore Error    Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
+        ${link}=            Strip String        ${link}         mode=right      characters=.
+        ${linkString}=      Set Variable        "${link}"
+        ${exception}=       Evaluate            list(filter(${linkString}.startswith, ["https://doi.org","https://www.sciencedirect.com/", "https://www.instagram.com/globeprogram/"])) != []
+        IF  '${exception}'=='False'
+            Create Session      testLink        ${link}         disable_warnings=1
+            ${canConnect}=      Run Keyword And Return Status   GET On Session  testLink    ${link}
+            IF  '${canConnect}' == 'False'
+                ${status}=  Run Keyword And Return Status  Manually Test Link   ${link}
+                Close Browser
+                Switch Browser      main
+                IF  '${status}'=='False'
+                    Append To List                  ${broken_links}             ${link}
+                    ${broken_length}=               Get length                  ${broken_links}
+                    Run Keyword And Ignore Error    Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
+                END           
             END
         END
         ${index}=    Evaluate    ${index} + 1
     END
     Delete All Sessions
     ${broken_length}=   Get length                  ${broken_links}
-    Run Keyword If	    ${broken_length} > 0        Fail                One or more broken links discovered: ${broken_links}
+    Run Keyword If	    ${broken_length} > 0        Fail                ${location} contains one or more broken links: ${broken_links}
 
 Manually Test Link
     [Arguments]     ${link}
