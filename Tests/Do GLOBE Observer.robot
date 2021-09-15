@@ -52,7 +52,6 @@ Do GLOBE Observer Mosquito Habitats Page
     Each link in main page content should be valid
 
 Do GLOBE Observer Mosquito Habitats Taking Observations
-    Do GLOBE Observer Clouds Taking Observations
     Click Link in Navbar    Do GLOBE Observer       Mosquito Habitats       Taking Observations
     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/mosquito-habitats/taking-observations
     Each link in main page content should be valid
@@ -76,7 +75,6 @@ Do GLOBE Observer Land Cover Page
     Each link in main page content should be valid
 
 Do GLOBE Observer Land Cover Taking Observations
-    Do GLOBE Observer Clouds Taking Observations
     Click Link in Navbar    Do GLOBE Observer       Land Cover      Taking Observations
     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/land-cover/taking-observations
     Each link in main page content should be valid
@@ -100,7 +98,6 @@ Do GLOBE Observer Trees Page
     Each link in main page content should be valid
 
 Do GLOBE Observer Trees Taking Observations
-    Do GLOBE Observer Clouds Taking Observations
     Click Link in Navbar    Do GLOBE Observer       Trees       Taking Observations
     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/trees/taking-observations
     Each link in main page content should be valid
@@ -121,25 +118,63 @@ Do GLOBE Observer Trees Family Guide
     Each link in main page content should be valid
 
 # Eclipse -------------------------------------------------------------------------------------------------------
-# Do GLOBE Observer Land Cover Page
-#     Click Link in Navbar    Do GLOBE Observer       Land Cover
-#     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/land-cover
-#     Click Link in Navbar    Do GLOBE Observer       Land Cover      Overview
-#     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/land-cover
-#     Each link in main page content should be valid
+Do GLOBE Observer Eclipse Page
+    Click Link in Navbar    Do GLOBE Observer       Eclipse
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/eclipse
+    Click Link in Navbar    Do GLOBE Observer       Eclipse      Overview
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/eclipse
+    Each link in main page content should be valid
 
-# Do GLOBE Observer Land Cover Taking Observations
-#     Do GLOBE Observer Clouds Taking Observations
-#     Click Link in Navbar    Do GLOBE Observer       Land Cover      Taking Observations
-#     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/land-cover/taking-observations
-#     Each link in main page content should be valid
+Do GLOBE Observer Eclipse Taking Observations
+    Click Link in Navbar    Do GLOBE Observer       Eclipse      Taking Observations
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/eclipse/taking-observations
+    Each link in main page content should be valid
 
-# Do GLOBE Observer Land Cover Science
-#     Click Link in Navbar    Do GLOBE Observer       Land Cover      Science
-#     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/land-cover/science
-#     Each link in main page content should be valid
+Do GLOBE Observer Eclipse Science
+    Click Link in Navbar    Do GLOBE Observer       Eclipse      Science
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/eclipse/data-analysis
+    Each link in main page content should be valid
 
-# Do GLOBE Observer Land Cover Resource Library
-#     Click Link in Navbar    Do GLOBE Observer       Land Cover      Resource Library
-#     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/land-cover/resource-library
-#     Each link in main page content should be valid
+Do GLOBE Observer Eclipse Resource Library
+    Click Link in Navbar    Do GLOBE Observer       Eclipse      Resource Library
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/eclipse/resource-library
+    Each link in main page content should be valid
+
+# Challenges -------------------------------------------------------------------------------------------------------
+Do GLOBE Observer Challenges Page
+    Click Link in Navbar    Do GLOBE Observer       Challenges
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/challenges
+    Click Link in Navbar    Do GLOBE Observer       Challenges      Past Challenges
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/challenges
+    Each link in main page content should be valid
+
+Do GLOBE Observer Challenges Mosquito Habitat Photo Challenge
+    Click Link in Navbar    Do GLOBE Observer       Challenges      Mosquito Habitat Photo Challenge
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/challenges/mosquito-habitat-photo-challenge
+    Each link in main page content should be valid
+
+Do GLOBE Observer Challenges Community Trees Challenge 2021
+    Click Link in Navbar    Do GLOBE Observer       Challenges      Community Trees Challenge 2021
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/challenges/community-trees-challenge-2021
+    Each link in main page content should be valid
+
+# Do More -------------------------------------------------------------------------------------------------------
+Do GLOBE Observer Do More Page
+    Click Link in Navbar    Do GLOBE Observer       Do More
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/do-more
+    Each link in main page content should be valid
+
+Do GLOBE Observer Do More Stations
+    Click Link in Navbar    Do GLOBE Observer       Do More      Stations
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/do-more/stations
+    Each link in main page content should be valid
+
+Do GLOBE Observer Do More Teams
+    Click Link in Navbar    Do GLOBE Observer       Do More      Teams
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/do-more/teams
+    Each link in main page content should be valid
+
+Do GLOBE Observer Do More At Home
+    Click Link in Navbar    Do GLOBE Observer       Do More      At Home
+    Wait Until Location Is  https://observer.globe.gov/do-globe-observer/do-more/at-home
+    Each link in main page content should be valid
