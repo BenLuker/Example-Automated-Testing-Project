@@ -58,7 +58,7 @@ Each link in main page content should be valid
     FOR    ${link}    IN    @{href_list}
         ${link}=            Strip String        ${link}         mode=right      characters=.
         ${linkString}=      Set Variable        "${link}"
-        ${exception}=       Evaluate            list(filter(${linkString}.startswith, ["https://doi.org","https://www.sciencedirect.com/", "https://www.instagram.com/globeprogram/"])) != []
+        ${exception}=       Evaluate            list(filter(${linkString}.startswith, ["https://doi.org","https://www.sciencedirect.com/", "https://www.instagram.com/globeprogram/", "https://observer.globe.gov/documents/19589576/"])) != []
         IF  '${exception}'=='False'
             Create Session      testLink        ${link}         disable_warnings=1
             ${canConnect}=      Run Keyword And Return Status   GET On Session  testLink    ${link}
