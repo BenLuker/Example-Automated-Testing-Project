@@ -8,15 +8,16 @@ Variables       WebElements.py
 *** Keywords ***
 
 Open to Site
-    [Arguments]     ${link}
-    ${chrome_options}=                  Evaluate        sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument    --disable-extensions
-    Run Keyword If	'${headless}' == 'True'	            Call Method    ${chrome_options}    add_argument    --headless
-    Call Method    ${chrome_options}    add_argument    --disable-gpu
-    Call Method    ${chrome_options}    add_argument    --no-sandbox
-    Create Webdriver    Chrome          chrome_options=${chrome_options}
-    Set Window Size     ${1920}   ${1080}
-    Go to          ${link}
+    [Arguments]     ${link}   ${alias}=main
+    ${chrome_options}=                              Evaluate                sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method         ${chrome_options}           add_argument            --disable-extensions
+    Run Keyword If	    '${headless}' == 'True'	    Call Method             ${chrome_options}       add_argument    --headless
+    Call Method         ${chrome_options}           add_argument            --disable-gpu
+    Call Method         ${chrome_options}           add_argument            --no-sandbox
+    Create Webdriver    Chrome                      alias=${alias}          chrome_options=${chrome_options}
+    Run Keyword If	    '${headless}' == 'True'     Set Window Size         ${1920}                 ${1080}
+    Run Keyword If	    '${headless}' == 'False'    Maximize Browser Window
+    Go to               ${link}
 
 Wait Until Page Finishes Loading
     Wait for condition  return window.document.readyState == 'complete'
@@ -65,12 +66,22 @@ Each link in main page content should be valid
                 Run Keyword And Ignore Error    Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
             END
         ELSE
-            Append To List                  ${broken_links}             ${link}
-            ${broken_length}=               Get length                  ${broken_links}
-            Run Keyword And Ignore Error    Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
+            ${status}=  Run Keyword And Return Status  Manually Test Link   ${link}
+            Close Browser
+            IF  '${status}'=='Fail'
+                Append To List                  ${broken_links}             ${link}
+                ${broken_length}=               Get length                  ${broken_links}
+                Run Keyword And Ignore Error    Capture Element Screenshot  ${element_list}[${index}]   ${SUITE NAME}-${TEST NAME}-broken link-${broken_length}.png
+            END
         END
         ${index}=    Evaluate    ${index} + 1
     END
     Delete All Sessions
     ${broken_length}=   Get length                  ${broken_links}
     Run Keyword If	    ${broken_length} > 0        Fail                One or more broken links discovered: ${broken_links}
+
+Manually Test Link
+    [Arguments]     ${link}
+    Open to Site    ${link}     testLink
+    Wait Until Page Finishes Loading
+    Wait Until Location Is      ${link}
