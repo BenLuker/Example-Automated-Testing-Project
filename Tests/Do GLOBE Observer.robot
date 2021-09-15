@@ -130,8 +130,8 @@ Do GLOBE Observer Eclipse Taking Observations
     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/eclipse/taking-observations
     Each link in main page content should be valid
 
-Do GLOBE Observer Eclipse Science
-    Click Link in Navbar    Do GLOBE Observer       Eclipse      Science
+Do GLOBE Observer Eclipse Data Analysis
+    Click Link in Navbar    Do GLOBE Observer       Eclipse      Data Analysis
     Wait Until Location Is  https://observer.globe.gov/do-globe-observer/eclipse/data-analysis
     Each link in main page content should be valid
 

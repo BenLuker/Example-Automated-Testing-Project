@@ -8,7 +8,7 @@ Test Teardown  Close All Browsers
 
 *** Test Cases ***
 
-Publications
+Publications Page
     Click Link in Navbar    Publications
     Wait Until Location Is  https://observer.globe.gov/publications
     Each link in main page content should be valid
